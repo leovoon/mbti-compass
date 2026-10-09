@@ -1,2 +1,10 @@
 codedb.snapshot
 .DS_Store
+.wrangler/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example

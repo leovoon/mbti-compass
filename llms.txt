@@ -42,6 +42,6 @@ remembered locally.
 
 ## Meta
 
-- Single static page, works without a server: https://mbti-compass.pages.dev/
+- Single static page, works without a server: https://mbti-compass.slower.workers.dev/
 - No cookies, no analytics, no accounts.
 - Unofficial. Not affiliated with MBTI® or The Myers-Briggs Company.
