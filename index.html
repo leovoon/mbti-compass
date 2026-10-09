@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Compass · MBTI 8 Cognitive Functions Quiz</title>
-<meta name="description" content="Interactive MBTI quiz: drag the eight Jungian cognitive functions (Ni, Ti, Si, Te, Se, Fe, Ne, Fi) onto a compass ring and pair every opposite across the centre. Free, no signup, 9 languages.">
+<meta name="description" content="Interactive MBTI quiz: tap the eight Jungian cognitive functions onto a compass ring — emoji wheel or name dropdown — and pair every opposite across the centre. Free, no signup, 9 languages.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0b0a1c">
 <link rel="canonical" href="https://mbti-compass.slower.workers.dev/">
@@ -15,7 +15,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Compass">
 <meta property="og:title" content="The Compass · MBTI 8 Cognitive Functions Quiz">
-<meta property="og:description" content="Drag the eight Jungian cognitive functions onto a compass ring and pair every opposite across the centre. Free interactive MBTI quiz in 9 languages.">
+<meta property="og:description" content="Tap the eight Jungian cognitive functions onto a compass ring — circular picker for emojis, smooth dropdown for names — and pair every opposite. Free MBTI quiz in 9 languages.">
 <meta property="og:url" content="https://mbti-compass.slower.workers.dev/">
 <meta property="og:image" content="https://mbti-compass.slower.workers.dev/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -31,7 +31,7 @@
 <meta property="og:locale:alternate" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Compass · MBTI 8 Cognitive Functions Quiz">
-<meta name="twitter:description" content="Drag the eight Jungian cognitive functions onto a compass ring and pair every opposite across the centre.">
+<meta name="twitter:description" content="Tap the eight Jungian cognitive functions onto a compass ring — circular picker for emojis, smooth dropdown for names.">
 <meta name="twitter:image" content="https://mbti-compass.slower.workers.dev/og-image.png">
 <script type="application/ld+json">
 {
@@ -39,7 +39,7 @@
   "@type": "WebApplication",
   "name": "The Compass · MBTI Cognitive Functions Quiz",
   "url": "https://mbti-compass.slower.workers.dev/",
-  "description": "Interactive browser quiz for Jung's eight cognitive functions and the four attitude pairs: Ni–Se, Ne–Si, Ti–Fe, Te–Fi. Drag each function onto a compass ring, check the arrangement, and reveal every opposite pair.",
+  "description": "Interactive browser quiz for Jung's eight cognitive functions and the four attitude pairs: Ni–Se, Ne–Si, Ti–Fe, Te–Fi. Tap each function onto a compass ring — emoji slots open a circular wheel, name slots a dropdown — and reveal every opposite pair.",
   "applicationCategory": "EducationalApplication",
   "genre": "quiz",
   "operatingSystem": "Any",
@@ -71,12 +71,12 @@ body{min-height:100vh;
 .sky i{position:absolute;border-radius:50%;background:#fff;opacity:var(--o);animation:tw 6s ease-in-out infinite}
 @keyframes tw{50%{opacity:calc(var(--o) * .25)}}
 
-.app{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:28px 18px 56px}
-header h1{font-family:var(--serif);font-weight:500;letter-spacing:.02em;font-size:clamp(28px,4vw,42px);margin:0}
+.app{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:28px 18px 56px}
+header h1{font-family:var(--serif);font-weight:500;letter-spacing:.02em;font-size:clamp(28px,4vw,42px);margin:0;text-align:center}
 header h1 span{color:var(--gold)}
-.sub{color:var(--muted);margin:6px 0 0;max-width:60ch;line-height:1.55;font-size:15px}
+.sub{color:var(--muted);margin:6px auto 0;max-width:58ch;line-height:1.55;font-size:15px;text-align:center}
 
-.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:20px 0 6px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;margin:20px 0 6px}
 .seg{display:inline-flex;background:var(--glass);border:1px solid var(--glass2);border-radius:999px;padding:3px}
 .seg button{border:0;background:transparent;color:var(--muted);padding:8px 14px;border-radius:999px;font:inherit;font-size:14px;cursor:pointer;transition:background .2s,color .2s}
 .seg button[aria-pressed="true"]{background:rgba(232,201,138,.16);color:var(--gold)}
@@ -88,15 +88,14 @@ header h1 span{color:var(--gold)}
 .btn.primary.ready{animation:ready 1.6s ease-in-out infinite}
 @keyframes ready{50%{box-shadow:0 0 0 6px rgba(232,201,138,.18)}}
 .btn.icon{padding:9px 12px;line-height:1}
-.status{margin-left:auto;color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}
+.status{color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums;min-width:86px;text-align:right}
 
-.stage{display:grid;grid-template-columns:1fr;gap:18px;align-items:start;margin-top:12px}
-@media (min-width:980px){.stage{grid-template-columns:minmax(0,560px) 1fr}}
+.howto{color:var(--muted);text-align:center;font-size:13.5px;margin:16px 0 0;letter-spacing:.01em}
 
 /* ---------- board ---------- */
-.board{position:relative;width:min(100%,560px);aspect-ratio:1;margin:0 auto;
-  --es:62px;--lw:118px;--lh:32px}
-@media (max-width:560px){.board{--es:48px;--lw:92px;--lh:27px}}
+.board{position:relative;width:min(100%,600px);aspect-ratio:1;margin:14px auto 0;
+  --es:64px;--lw:120px;--lh:32px}
+@media (max-width:560px){.board{--es:50px;--lw:96px;--lh:28px}}
 .board svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .board .ring{fill:none;stroke:rgba(255,255,255,.06);stroke-width:.3;stroke-dasharray:.8 1.4}
 .board line{stroke:var(--line);stroke-width:.45;stroke-linecap:round;transition:stroke .7s,stroke-width .7s,filter .7s}
@@ -108,12 +107,14 @@ header h1 span{color:var(--gold)}
 .node{position:absolute;width:0;height:0}
 .slot{position:absolute;left:0;top:0;padding:0;font:inherit;color:inherit;cursor:pointer;
   border:1.5px dashed rgba(236,232,255,.26);background:rgba(11,10,28,.86);
+  touch-action:manipulation;
   transition:border-color .2s,background .2s,box-shadow .25s,transform .2s}
 .slot.emoji{width:var(--es);height:var(--es);border-radius:50%;transform:translate(-50%,-50%);display:grid;place-items:center}
 .slot.label{width:var(--lw);height:var(--lh);border-radius:999px;transform:translate(-50%,calc(var(--es) / 2 + 8px));display:flex}
+.slot:hover{border-color:rgba(232,201,138,.5)}
+.slot:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.slot.open-slot{border-color:var(--gold);background:rgba(232,201,138,.1)}
 .slot.filled{border-style:solid;border-color:rgba(236,232,255,.2)}
-.slot.target{border-color:rgba(232,201,138,.65)}
-.slot.over{border-style:solid;border-color:var(--gold);background:rgba(232,201,138,.14)}
 .slot.ok{border:1.5px solid var(--ok);box-shadow:0 0 0 4px rgba(127,224,176,.12)}
 .slot.bad{border:1.5px solid var(--bad);box-shadow:0 0 0 4px rgba(255,143,163,.12)}
 .slot.emoji.bad{animation:shakeC .42s}
@@ -123,37 +124,62 @@ header h1 span{color:var(--gold)}
 .slot.hinted{animation:glow 1.4s ease-out}
 @keyframes glow{0%{box-shadow:0 0 0 0 rgba(232,201,138,.7)}100%{box-shadow:0 0 0 14px rgba(232,201,138,0)}}
 
-/* ---------- chips ---------- */
-.chip{font:inherit;color:var(--ink);cursor:grab;touch-action:none;
-  border:1px solid rgba(255,255,255,.18);
-  background:linear-gradient(180deg,rgba(255,255,255,.15),rgba(255,255,255,.05));
-  box-shadow:0 6px 18px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.12);
-  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-.chip.e{width:52px;height:52px;border-radius:50%;font-size:26px;line-height:1;display:grid;place-items:center;padding:0}
-.chip.l{height:32px;padding:0 13px;border-radius:999px;font-size:14px;display:inline-flex;gap:6px;align-items:center;white-space:nowrap}
+/* ---------- placed value inside a slot ---------- */
+.chip{pointer-events:none;line-height:1}
+.chip.e{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;font-size:calc(var(--es) * .46)}
+.chip.l{width:100%;height:100%;border-radius:999px;display:flex;justify-content:center;align-items:center;gap:6px;font-size:13.5px;white-space:nowrap}
 .chip.l b{font-weight:550}
 .chip.l span{color:var(--gold);font-size:12px;letter-spacing:.04em}
-.chip.loose{position:absolute;transform:translate(-50%,-50%) rotate(var(--rot,0deg));transition:transform .18s}
-.chip.loose:hover{transform:translate(-50%,-50%) rotate(0deg) scale(1.05)}
-.chip.dragging{position:fixed;z-index:60;transform:translate(-50%,-50%) scale(1.1);pointer-events:none;cursor:grabbing;
-  box-shadow:0 16px 34px rgba(0,0,0,.55)}
-.chip.selected{outline:2px solid var(--gold);outline-offset:3px}
-.chip:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.slot .chip{width:100%;height:100%;border-color:transparent;background:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
-.slot.emoji .chip{font-size:calc(var(--es) * .44);border-radius:50%}
-.slot.label .chip{justify-content:center;padding:0 6px;font-size:13px}
-@media (max-width:560px){.slot.label .chip{font-size:11.5px;gap:4px}.slot.label .chip span{font-size:10.5px}}
+@media (max-width:560px){.chip.l{font-size:12px;gap:4px}.chip.l span{font-size:10.5px}}
 
-/* ---------- field ---------- */
-.field{position:relative;height:330px;border-radius:24px;border:1px dashed rgba(255,255,255,.12);background:rgba(255,255,255,.025)}
-@media (min-width:980px){.field{height:560px}}
-@media (max-width:560px){
-  .field{height:410px}
-  .chip.e{width:44px;height:44px;font-size:22px}
-  .chip.l{height:28px;padding:0 10px;font-size:12.5px;gap:4px}
-  .chip.l span{font-size:11px}
-}
-.field-cap{position:absolute;left:18px;top:13px;color:var(--muted);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.65}
+/* ---------- radial wheel picker ---------- */
+#veil{position:fixed;inset:0;z-index:80;background:rgba(5,4,14,.48);
+  opacity:0;pointer-events:none;transition:opacity .18s ease}
+#veil.on{opacity:1;pointer-events:auto}
+#hub{position:absolute;left:0;top:0;width:0;height:0}
+.ropt{--oe:54px;
+  position:absolute;left:0;top:0;width:var(--oe);height:var(--oe);border-radius:50%;
+  display:grid;place-items:center;padding:0;cursor:pointer;
+  font:inherit;font-size:calc(var(--oe) * .48);line-height:1;color:var(--ink);
+  border:1.5px solid rgba(255,255,255,.22);
+  background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.05));
+  box-shadow:0 8px 22px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.14);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  touch-action:manipulation;
+  transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1);opacity:1;
+  transition:transform .34s cubic-bezier(.34,1.5,.5,1),opacity .26s ease,border-color .15s,background .15s,box-shadow .15s;
+  transition-delay:calc(var(--i) * 30ms)}
+@media (max-width:560px){.ropt{--oe:46px}}
+.ropt.pre{transform:translate(-50%,-50%) scale(.25);opacity:0;transition-delay:0s}
+.ropt:hover,.ropt:focus-visible{border-color:var(--gold);background:rgba(232,201,138,.18);outline:none;
+  box-shadow:0 0 0 3px rgba(232,201,138,.22),0 8px 22px rgba(0,0,0,.45)}
+.ropt.cur{border-color:var(--gold)}
+
+/* ---------- label dropdown ---------- */
+#drop{position:fixed;z-index:85;display:none;
+  width:min(300px,calc(100vw - 20px));padding:6px;
+  border-radius:18px;border:1px solid var(--glass2);
+  background:rgba(17,14,40,.94);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  box-shadow:0 18px 50px rgba(0,0,0,.5);
+  max-height:min(360px,62vh);overflow:auto;
+  transform-origin:top center}
+#drop.on{display:block;animation:dropIn .24s cubic-bezier(.2,.9,.25,1)}
+#drop.up{transform-origin:bottom center}
+@keyframes dropIn{from{opacity:0;transform:translateY(-10px) scale(.97)}to{opacity:1;transform:none}}
+#drop button{display:flex;width:100%;gap:10px;align-items:center;padding:10px 12px;
+  border:0;border-radius:12px;background:transparent;color:var(--ink);
+  font:inherit;font-size:15px;cursor:pointer;text-align:left;
+  touch-action:manipulation;
+  opacity:0;transform:translateY(-6px);
+  transition:opacity .22s ease,transform .22s ease,background .12s;
+  transition-delay:calc(var(--i) * 26ms)}
+#drop.on button{opacity:1;transform:none}
+#drop button:hover,#drop button:focus-visible{background:rgba(232,201,138,.14);outline:none}
+#drop button.cur{background:rgba(232,201,138,.1)}
+#drop button .em{font-size:20px;width:26px;text-align:center;flex:none}
+#drop button .nm{font-weight:550}
+#drop button .id{margin-left:auto;color:var(--gold);font-size:12px;letter-spacing:.05em}
 
 /* ---------- bonds legend ---------- */
 .bonds{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
@@ -200,17 +226,18 @@ header h1 span{color:var(--gold)}
     </div>
     <button type="button" class="btn primary" id="checkBtn">Check</button>
     <button type="button" class="btn" id="hintBtn">Hint</button>
-    <button type="button" class="btn" id="shuffleBtn">Scatter again</button>
+    <button type="button" class="btn" id="resetBtn">Reset</button>
     <button type="button" class="btn icon" id="soundBtn" title="Sound">🔊</button>
     <select class="btn" id="langSel" aria-label="Language"></select>
     <span class="status" id="status"></span>
   </div>
 
+  <p class="howto" id="howto"></p>
+
   <section class="stage">
     <div class="board" id="board">
       <svg viewBox="0 0 100 100" id="lines" aria-hidden="true"></svg>
     </div>
-    <div class="field" id="field"><span class="field-cap" id="fieldCap">Drag, or tap a piece then tap a blank</span></div>
   </section>
 
   <p class="result" id="result" aria-live="polite"></p>
@@ -223,6 +250,9 @@ header h1 span{color:var(--gold)}
     <p>Unofficial. Not affiliated with MBTI® or The Myers-Briggs Company.</p>
   </footer>
 </main>
+
+<div id="veil" aria-hidden="true"><div id="hub"></div></div>
+<div id="drop" role="listbox"></div>
 
 <script src="locales.js"></script>
 <script>
@@ -237,6 +267,7 @@ header h1 span{color:var(--gold)}
     Ne:{e:'🎈', n:'Inventor',  t:'ENFP · ENTP', opp:'Si'},
     Fi:{e:'🕯️', n:'Monk',      t:'INFP · ISFP', opp:'Te'},
   };
+  const FN_KEYS = Object.keys(FN);
   // clockwise from the top; slot i faces slot i+4 across the centre
   const RING = ['Ni','Ti','Si','Te','Se','Fe','Ne','Fi'];
   const BONDS = [
@@ -246,6 +277,7 @@ header h1 span{color:var(--gold)}
     {a:'Te', b:'Fi'},
   ];
   const CX = 50, CY = 48, R = 33;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
   let locale = 'en';
   const t = () => LOCALES[locale];
@@ -269,8 +301,9 @@ header h1 span{color:var(--gold)}
   locale = detectLocale();
 
   const $ = s => document.querySelector(s);
-  const board = $('#board'), field = $('#field'), svg = $('#lines');
-  let mode = 'exact', checks = 0, hints = 0, selected = null, drag = null;
+  const board = $('#board'), svg = $('#lines');
+  const veil = $('#veil'), hub = $('#hub'), drop = $('#drop');
+  let mode = 'exact', checks = 0, hints = 0;
 
   /* ---------- sound: everything is synthesised, nothing is a sample ----------
      Each compass position owns a note of D major. Position i and its opposite
@@ -292,7 +325,6 @@ header h1 span{color:var(--gold)}
       master = ctx.createGain(); master.gain.value = .55;
       const comp = ctx.createDynamicsCompressor();
       master.connect(comp); comp.connect(ctx.destination);
-      // a soft feedback echo, low-passed so repeats darken like a hall
       const d = ctx.createDelay(1), fb = ctx.createGain(), lp = ctx.createBiquadFilter();
       d.delayTime.value = .27; fb.gain.value = .33; lp.type = 'lowpass'; lp.frequency.value = 2000;
       wet = ctx.createGain(); wet.gain.value = .3;
@@ -311,7 +343,6 @@ header h1 span{color:var(--gold)}
       g.gain.exponentialRampToValueAtTime(peak, t + a);
       g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
     }
-    // two-operator FM bell: a sine carrier whose brightness decays away
     function bell(freq, {at = 0, dur = 1.4, gain = .22, pan = 0, ratio = 3.5, bright = 1.6, send = 1} = {}) {
       if (!ready()) return;
       const t = ctx.currentTime + at;
@@ -352,20 +383,17 @@ header h1 span{color:var(--gold)}
       hover(i, x) { blip(fSlot(i) * 4, fSlot(i) * 4, {dur: .05, gain: .025, pan: panOf(x), send: .2}); },
       select(x) { blip(660, 990, {dur: .07, gain: .05, pan: panOf(x)}); },
       unselect(x) { blip(990, 660, {dur: .07, gain: .04, pan: panOf(x)}); },
-      // name pieces ring an octave lower and softer than emoji pieces
       place(i, kind, x, paired) {
         const f = fSlot(i) * (kind === 'emoji' ? 1 : .5);
         bell(f, {gain: kind === 'emoji' ? .2 : .16, bright: kind === 'emoji' ? 1.8 : .9, pan: panOf(x)});
         tap({gain: .05, pan: panOf(x), freq: 900});
         if (paired) bell(fSlot(i) * 1.5, {at: .09, gain: .07, dur: 1.1, ratio: 2, bright: .6, pan: panOf(x)});
       },
-      field(x) { tap({pan: panOf(x)}); blip(330, 220, {dur: .1, gain: .03, pan: panOf(x), send: 0}); },
       wrong(x) {
         if (!ready()) return;
         blip(150, 110, {dur: .22, gain: .06, type: 'square', pan: panOf(x), send: 0});
         blip(158, 116, {dur: .22, gain: .05, type: 'square', pan: panOf(x), send: 0});
       },
-      // a sweep clockwise round the compass: right notes ring, wrong ones thud
       check(states, solvedLines, won) {
         if (!ready()) return;
         const step = .085;
@@ -390,13 +418,12 @@ header h1 span{color:var(--gold)}
           blip(pentaNote(2, k), pentaNote(2, k), {at: at + 1 + Math.random() * 1.6, dur: .08, gain: .03, pan: Math.random() * 1.6 - .8});
       },
       hint() { for (let k = 0; k < 6; k++) blip(pentaNote(1, k * 2), pentaNote(1, k * 2 + 1), {at: k * .045, dur: .07, gain: .045, pan: -.5 + k * .2}); },
-      // sixteen pieces raining down: random pentatonic plinks panned by where each lands
-      scatter(pans) {
+      reset() {
         if (!ready()) return;
-        pans.forEach((p, k) => {
+        for (let k = 0; k < 10; k++) {
           const f = pentaNote(1, Math.random() * 10 | 0);
-          blip(f, f * .98, {at: k * .038 + Math.random() * .02, dur: .09, gain: .04, pan: p, send: .5});
-        });
+          blip(f, f * .98, {at: k * .032 + Math.random() * .02, dur: .08, gain: .035, pan: Math.random() * 1.4 - .7, send: .5});
+        }
       },
     };
   })();
@@ -420,217 +447,157 @@ header h1 span{color:var(--gold)}
   s += `<circle class="hub" cx="${CX}" cy="${CY}" r="1.3"/>`;
   svg.innerHTML = s;
 
+  const state = { emoji: Array(8).fill(null), label: Array(8).fill(null) };
   const slots = RING.map((_, i) => {
     const p = pos(i);
     const node = document.createElement('div');
     node.className = 'node';
     node.style.left = p.x + '%'; node.style.top = p.y + '%';
-    const se = mkSlot('emoji', i, t().blankEmoji(i + 1));
-    const sl = mkSlot('label', i, t().blankLabel(i + 1));
+    const se = mkSlot('emoji', i);
+    const sl = mkSlot('label', i);
     node.append(se, sl); board.append(node);
     return {emoji: se, label: sl};
   });
-  function mkSlot(kind, i, aria) {
-    // a div, not a button: the chip placed inside is itself a button
+  function mkSlot(kind, i) {
     const b = document.createElement('div');
     b.className = 'slot ' + kind;
     b.dataset.kind = kind; b.dataset.idx = i;
     b.setAttribute('role', 'button'); b.tabIndex = 0;
-    b.setAttribute('aria-label', aria);
-    const activate = () => {
-      if (!selected) return;
-      if (selected.dataset.kind !== kind) { flash(b); Sound.wrong(centerX(b)); return; }
-      putInSlot(selected, b, slotOf(selected));
-      deselect(); afterChange(); placeFx(b);
-    };
-    b.addEventListener('click', e => { if (!e.target.closest('.chip')) activate(); });
+    b.setAttribute('aria-haspopup', 'listbox');
+    b.setAttribute('aria-expanded', 'false');
+    b.addEventListener('click', () => onSlotActivate(kind, i));
     b.addEventListener('keydown', e => {
-      if (e.target === b && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); activate(); }
+      if (e.target === b && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); onSlotActivate(kind, i); }
     });
     return b;
   }
-
-  /* ---------- chips ---------- */
-  const chips = [];
-  for (const [id, f] of Object.entries(FN)) {
-    const ce = mkChip('e', id, 'emoji', f.e, t().fnEmoji(nameOf(id)));
-    const cl = mkChip('l', id, 'label', `<b>${nameOf(id)}</b><span>${id}</span>`, t().fnPair(nameOf(id), id));
-    chips.push(ce, cl);
-  }
-  function mkChip(cls, id, kind, html, aria) {
-    const c = document.createElement('button');
-    c.type = 'button'; c.className = 'chip ' + cls;
-    c.dataset.fn = id; c.dataset.kind = kind;
-    c.innerHTML = html; c.setAttribute('aria-label', aria);
-    c.addEventListener('pointerdown', onDown);
-    c.addEventListener('click', e => { if (e.detail === 0) tapChip(c); }); // keyboard
-    return c;
+  function onSlotActivate(kind, i) {
+    Sound.init();
+    if (open && open.kind === kind && open.idx === i) { closePicker(); return; }
+    openPicker(kind, i);
   }
 
-  /* ---------- placement helpers ---------- */
-  const slotOf = c => (c.parentElement && c.parentElement.classList.contains('slot')) ? c.parentElement : null;
   const centerX = el => { const r = el.getBoundingClientRect(); return r.left + r.width / 2; };
-  function placeFx(slot) {
-    const i = +slot.dataset.idx, n = getNode(i);
-    Sound.place(i, slot.dataset.kind, centerX(slot), !!n.e && n.e === n.l);
-  }
-  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
-  function resetChip(c) {
-    c.classList.remove('loose', 'dragging', 'selected');
-    c.style.left = c.style.top = '';
-    c._placed = false;
-  }
-  function setLoose(c, x, y, rot) {
-    const W = field.clientWidth, H = field.clientHeight;
-    c._px = x / W; c._py = y / H; c._rot = rot; c._placed = true;
-    c.style.left = (c._px * 100) + '%'; c.style.top = (c._py * 100) + '%';
-    c.style.setProperty('--rot', rot + 'deg');
-  }
-  function toField(c) { resetChip(c); c.classList.add('loose'); field.appendChild(c); }
-
-  function randomSpot(c) {
-    toField(c);
-    const W = field.clientWidth, H = field.clientHeight;
-    const w = c.offsetWidth, h = c.offsetHeight, pad = 12, top = 38;
-    const others = chips.filter(o => o !== c && o._placed && o.parentElement === field)
-      .map(o => ({x: o._px * W, y: o._py * H, w: o.offsetWidth, h: o.offsetHeight}));
-    let best = null, bestGap = -Infinity;
-    for (let t = 0; t < 160; t++) {
-      const x = pad + w / 2 + Math.random() * Math.max(1, W - w - 2 * pad);
-      const y = top + h / 2 + Math.random() * Math.max(1, H - h - top - pad);
-      let gap = Infinity;
-      for (const o of others) {
-        const dx = Math.abs(x - o.x) - (w + o.w) / 2, dy = Math.abs(y - o.y) - (h + o.h) / 2;
-        gap = Math.min(gap, Math.max(dx, dy));
-      }
-      if (gap >= 12) { best = {x, y}; break; }
-      if (gap > bestGap) { bestGap = gap; best = {x, y}; }
+  /* ---------- state → DOM ---------- */
+  function renderSlot(kind, i) {
+    const slot = slots[i][kind], fn = state[kind][i];
+    slot.classList.toggle('filled', !!fn);
+    slot.innerHTML = '';
+    if (fn) {
+      const v = document.createElement('span');
+      v.className = 'chip ' + (kind === 'emoji' ? 'e' : 'l');
+      if (kind === 'emoji') v.textContent = FN[fn].e;
+      else v.innerHTML = `<b>${nameOf(fn)}</b><span>${fn}</span>`;
+      slot.append(v);
     }
-    setLoose(c, best.x, best.y, Math.random() * 16 - 8);
+    const L = t();
+    const base = kind === 'emoji' ? L.blankEmoji(i + 1) : L.blankLabel(i + 1);
+    slot.dataset.base = base;
+    slot.setAttribute('aria-label', fn ? `${base}: ${kind === 'emoji' ? nameOf(fn) + ' ' + FN[fn].e : nameOf(fn)}` : base);
   }
-  function dropInField(c, x, y) {
-    toField(c);
-    const W = field.clientWidth, H = field.clientHeight, w = c.offsetWidth, h = c.offsetHeight;
-    setLoose(c, clamp(x, w / 2 + 6, W - w / 2 - 6), clamp(y, h / 2 + 6, H - h / 2 - 6), Math.random() * 10 - 5);
-  }
-  function putInSlot(c, slot, fromSlot) {
-    const occ = [...slot.children].find(x => x.classList.contains('chip') && x !== c);
-    if (occ) {
-      if (fromSlot && fromSlot !== slot) { resetChip(occ); fromSlot.appendChild(occ); }
-      else randomSpot(occ);
+  function setValue(kind, i, fn) {
+    const other = state[kind].indexOf(fn);
+    if (other !== -1 && other !== i) {
+      state[kind][other] = state[kind][i];
+      renderSlot(kind, other);
     }
-    resetChip(c); slot.appendChild(c);
-    refreshFilled();
-  }
-  function refreshFilled() {
-    document.querySelectorAll('.slot').forEach(s => s.classList.toggle('filled', !!s.querySelector('.chip')));
-  }
-
-  function scatterAll() {
-    deselect(); clearMarks(true);
-    chips.forEach(c => { resetChip(c); c.style.visibility = 'hidden'; toField(c); });
-    shuffle([...chips]).forEach(c => { randomSpot(c); c.style.visibility = ''; });
-    refreshFilled(); afterChange();
-  }
-  function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; }
-
-  /* ---------- drag ---------- */
-  function onDown(e) {
-    if (e.pointerType === 'mouse' && e.button !== 0) return;
-    e.preventDefault();
-    Sound.init();
-    const c = e.currentTarget;
-    drag = {c, sx: e.clientX, sy: e.clientY, moved: false, fromSlot: slotOf(c), px: c._px, py: c._py, rot: c._rot, over: null};
-    window.addEventListener('pointermove', onMove);
-    window.addEventListener('pointerup', onUp);
-    window.addEventListener('pointercancel', onCancel);
-  }
-  function stopListening() {
-    window.removeEventListener('pointermove', onMove);
-    window.removeEventListener('pointerup', onUp);
-    window.removeEventListener('pointercancel', onCancel);
-  }
-  function onMove(e) {
-    const d = drag; if (!d) return;
-    if (!d.moved) {
-      if (Math.hypot(e.clientX - d.sx, e.clientY - d.sy) < 6) return;
-      d.moved = true; deselect(); clearMarks();
-      resetChip(d.c); d.c.classList.add('dragging'); document.body.appendChild(d.c);
-      refreshFilled(); showTargets(d.c.dataset.kind);
-      Sound.pick(e.clientX);
-    }
-    d.c.style.left = e.clientX + 'px'; d.c.style.top = e.clientY + 'px';
-    const sl = slotAt(e.clientX, e.clientY, d.c.dataset.kind);
-    if (sl !== d.over) {
-      d.over && d.over.classList.remove('over'); sl && sl.classList.add('over'); d.over = sl;
-      if (sl) Sound.hover(+sl.dataset.idx, e.clientX);
-    }
-  }
-  function onUp(e) {
-    stopListening();
-    const d = drag; drag = null; if (!d) return;
-    if (!d.moved) { tapChip(d.c); return; }
-    d.over && d.over.classList.remove('over'); showTargets(null);
-    const c = d.c, sl = slotAt(e.clientX, e.clientY, c.dataset.kind), fr = field.getBoundingClientRect();
-    if (sl) { putInSlot(c, sl, d.fromSlot); placeFx(sl); }
-    else if (e.clientX >= fr.left && e.clientX <= fr.right && e.clientY >= fr.top && e.clientY <= fr.bottom) {
-      dropInField(c, e.clientX - fr.left, e.clientY - fr.top); Sound.field(e.clientX);
-    }
-    else { goBack(c, d); Sound.field(e.clientX); }
-    refreshFilled(); afterChange();
-  }
-  function onCancel() {
-    stopListening();
-    const d = drag; drag = null; if (!d || !d.moved) return;
-    d.over && d.over.classList.remove('over'); showTargets(null);
-    goBack(d.c, d); refreshFilled(); afterChange();
-  }
-  function goBack(c, d) {
-    if (d.fromSlot) putInSlot(c, d.fromSlot, null);
-    else { toField(c); setLoose(c, d.px * field.clientWidth, d.py * field.clientHeight, d.rot || 0); }
-  }
-  function slotAt(x, y, kind) {
-    let best = null, bd = 30;
-    for (const s of document.querySelectorAll(`.slot[data-kind="${kind}"]`)) {
-      const r = s.getBoundingClientRect();
-      const dx = Math.max(r.left - x, 0, x - r.right), dy = Math.max(r.top - y, 0, y - r.bottom);
-      const dist = Math.hypot(dx, dy);
-      if (dist < bd) { bd = dist; best = s; }
-    }
-    return best;
-  }
-
-  /* ---------- tap ---------- */
-  function tapChip(c) {
+    state[kind][i] = fn;
+    renderSlot(kind, i);
     clearMarks();
-    Sound.init();
-    if (selected === c) { deselect(); Sound.unselect(centerX(c)); return; }
-    const target = slotOf(c);
-    if (selected && target && selected.dataset.kind === c.dataset.kind) {
-      putInSlot(selected, target, slotOf(selected));
-      deselect(); afterChange(); placeFx(target); return;
-    }
-    select(c); Sound.select(centerX(c));
+    afterChange();
   }
-  function select(c) { deselect(); selected = c; c.classList.add('selected'); showTargets(c.dataset.kind); }
-  function deselect() { if (selected) selected.classList.remove('selected'); selected = null; showTargets(null); }
-  function showTargets(kind) {
-    document.querySelectorAll('.slot').forEach(s => s.classList.toggle('target', !!kind && s.dataset.kind === kind));
-  }
-  function flash(el) { el.classList.remove('bad'); void el.offsetWidth; el.classList.add('bad'); setTimeout(() => el.classList.remove('bad'), 450); }
+  const anyPlaced = () => state.emoji.some(Boolean) || state.label.some(Boolean);
 
-  field.addEventListener('click', e => {
-    if (e.target.closest('.chip') || !selected) return;
-    const fr = field.getBoundingClientRect();
-    dropInField(selected, e.clientX - fr.left, e.clientY - fr.top);
-    refreshFilled(); deselect(); afterChange(); Sound.field(e.clientX);
-  });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') deselect(); });
+  /* ---------- pickers ---------- */
+  let open = null;
+  function closePicker(restoreFocus = true) {
+    if (!open) return;
+    const {slot} = open;
+    open = null;
+    veil.classList.remove('on');
+    drop.classList.remove('on', 'up');
+    slot.classList.remove('open-slot');
+    slot.setAttribute('aria-expanded', 'false');
+    const hubKids = [...hub.children];
+    hubKids.forEach(el => el.classList.add('pre'));
+    setTimeout(() => { if (!open) { hub.innerHTML = ''; drop.innerHTML = ''; } }, 360);
+    if (restoreFocus) slot.focus({preventScroll: true});
+  }
+  function openPicker(kind, i) {
+    closePicker(false);
+    const slot = slots[i][kind];
+    open = {kind, idx: i, slot};
+    slot.classList.add('open-slot');
+    slot.setAttribute('aria-expanded', 'true');
+    Sound.select(centerX(slot));
+    if (kind === 'emoji') openRadial(i); else openDrop(i);
+  }
+  function openRadial(i) {
+    const slot = slots[i].emoji, cur = state.emoji[i];
+    const rect = slot.getBoundingClientRect();
+    const small = innerWidth < 560;
+    const RD = small ? 92 : 108, OE = small ? 46 : 54;
+    const pad = OE / 2 + 10;
+    const cx = clamp(rect.left + rect.width / 2, pad, innerWidth - pad);
+    const cy = clamp(rect.top + rect.height / 2, pad, innerHeight - pad);
+    hub.style.left = cx + 'px'; hub.style.top = cy + 'px';
+    FN_KEYS.forEach((id, k) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'ropt pre' + (cur === id ? ' cur' : '');
+      b.style.setProperty('--i', k);
+      const a = -Math.PI / 2 + k * Math.PI / 4;
+      b.style.setProperty('--dx', (RD * Math.cos(a)).toFixed(1) + 'px');
+      b.style.setProperty('--dy', (RD * Math.sin(a)).toFixed(1) + 'px');
+      b.textContent = FN[id].e;
+      b.setAttribute('role', 'option');
+      b.setAttribute('aria-selected', cur === id);
+      b.setAttribute('aria-label', t().fnEmoji(nameOf(id)));
+      b.addEventListener('click', ev => { ev.stopPropagation(); choose('emoji', i, id); });
+      hub.append(b);
+    });
+    veil.classList.add('on');
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      hub.querySelectorAll('.ropt').forEach(el => el.classList.remove('pre'));
+      hub.querySelector('.ropt')?.focus({preventScroll: true});
+    }));
+  }
+  function openDrop(i) {
+    const slot = slots[i].label, cur = state.label[i];
+    FN_KEYS.forEach((id, k) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = cur === id ? 'cur' : '';
+      b.style.setProperty('--i', k);
+      b.setAttribute('role', 'option');
+      b.setAttribute('aria-selected', cur === id);
+      b.innerHTML = `<span class="em">${FN[id].e}</span><span class="nm">${nameOf(id)}</span><span class="id">${id}</span>`;
+      b.addEventListener('click', ev => { ev.stopPropagation(); choose('label', i, id); });
+      drop.append(b);
+    });
+    const rect = slot.getBoundingClientRect();
+    drop.style.visibility = 'hidden'; drop.classList.add('on');
+    const h = drop.offsetHeight, w = drop.offsetWidth;
+    let top = rect.bottom + 8;
+    drop.classList.remove('up');
+    if (top + h > innerHeight - 10) { top = rect.top - h - 8; drop.classList.add('up'); }
+    top = clamp(top, 10, Math.max(10, innerHeight - h - 10));
+    const left = clamp(rect.left + rect.width / 2 - w / 2, 10, Math.max(10, innerWidth - w - 10));
+    drop.style.top = top + 'px'; drop.style.left = left + 'px';
+    drop.style.visibility = '';
+    veil.classList.add('on');
+    drop.querySelector('button')?.focus({preventScroll: true});
+  }
+  function choose(kind, i, id) {
+    setValue(kind, i, id);
+    const slot = slots[i][kind];
+    closePicker();
+    Sound.place(i, kind, centerX(slot), state.emoji[i] === state.label[i] && !!state.emoji[i]);
+  }
+  veil.addEventListener('click', () => closePicker());
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePicker(); });
 
   /* ---------- checking ---------- */
-  const fnIn = s => { const c = s.querySelector('.chip'); return c ? c.dataset.fn : null; };
-  const getNode = i => ({e: fnIn(slots[i].emoji), l: fnIn(slots[i].label)});
+  const getNode = i => ({e: state.emoji[i], l: state.label[i]});
   function nodeCorrect(i) {
     const {e, l} = getNode(i);
     if (mode === 'exact') return e === RING[i] && l === RING[i];
@@ -645,7 +612,7 @@ header h1 span{color:var(--gold)}
     board.classList.remove('won');
     $('#chant').classList.remove('show');
     $('#result').textContent = '';
-    if (hard) { checks = 0; hints = 0; renderBonds(new Set()); }
+    if (hard) { checks = 0; hints = 0; renderBonds(true); }
   }
 
   const opened = new Set();
@@ -661,7 +628,7 @@ header h1 span{color:var(--gold)}
   }
 
   function check() {
-    deselect(); clearMarks(); checks++;
+    closePicker(false); clearMarks(); checks++;
     let correct = 0;
     for (let i = 0; i < 8; i++) {
       const ok = nodeCorrect(i), {e, l} = getNode(i);
@@ -692,7 +659,7 @@ header h1 span{color:var(--gold)}
     Sound.check(states, solvedLines, correct === 8);
     const res = $('#result');
     if (correct === 8) win();
-    else if (correct === 0 && !chips.some(slotOf)) res.textContent = t().result.empty;
+    else if (correct === 0 && !anyPlaced()) res.textContent = t().result.empty;
     else res.innerHTML = t().result.partial(correct, mode);
   }
 
@@ -711,7 +678,7 @@ header h1 span{color:var(--gold)}
   }
 
   function hint() {
-    deselect(); clearMarks();
+    closePicker(false); clearMarks();
     let target = null, fn = null;
     if (mode === 'exact') {
       for (let i = 0; i < 8; i++) if (!nodeCorrect(i)) { target = i; fn = RING[i]; break; }
@@ -730,21 +697,27 @@ header h1 span{color:var(--gold)}
     }
     if (target === null) { $('#result').innerHTML = t().result.hintNone; return; }
     hints++;
+    for (const kind of ['emoji', 'label']) setValue(kind, target, fn);
     for (const kind of ['emoji', 'label']) {
-      const c = chips.find(x => x.dataset.kind === kind && x.dataset.fn === fn);
       const sl = slots[target][kind];
-      if (c.parentElement !== sl) putInSlot(c, sl, null);
       sl.classList.remove('hinted'); void sl.offsetWidth; sl.classList.add('hinted');
       setTimeout(() => sl.classList.remove('hinted'), 1500);
     }
-    refreshFilled(); afterChange();
     Sound.hint();
     Sound.place(target, 'emoji', centerX(slots[target].emoji), true);
     $('#result').innerHTML = t().result.hintOne(FN[fn].e, nameOf(fn));
   }
 
+  function resetBoard() {
+    closePicker(false); clearMarks(true);
+    state.emoji.fill(null); state.label.fill(null);
+    slots.forEach((_, i) => { renderSlot('emoji', i); renderSlot('label', i); });
+    afterChange();
+    Sound.reset();
+  }
+
   function afterChange() {
-    const placed = chips.filter(slotOf).length;
+    const placed = state.emoji.filter(Boolean).length + state.label.filter(Boolean).length;
     $('#status').textContent = t().place(placed);
     $('#checkBtn').classList.toggle('ready', placed === 16);
   }
@@ -754,14 +727,11 @@ header h1 span{color:var(--gold)}
     mode = b.dataset.mode;
     document.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', x === b));
     $('#sub').textContent = t().sub[mode];
-    clearMarks(); Sound.init(); Sound.tick(centerX(b));
+    closePicker(false); clearMarks(); Sound.init(); Sound.tick(centerX(b));
   }));
   $('#checkBtn').addEventListener('click', () => { Sound.init(); check(); });
   $('#hintBtn').addEventListener('click', () => { Sound.init(); hint(); });
-  $('#shuffleBtn').addEventListener('click', () => {
-    Sound.init(); scatterAll();
-    Sound.scatter(shuffle(chips.map(c => clamp((centerX(c) / innerWidth) * 2 - 1, -1, 1) * .7)));
-  });
+  $('#resetBtn').addEventListener('click', () => { Sound.init(); resetBoard(); });
   const soundBtn = $('#soundBtn');
   const paintSound = () => {
     const L = t();
@@ -779,6 +749,7 @@ header h1 span{color:var(--gold)}
     document.title = L.docTitle;
     $('#h1').innerHTML = L.h1;
     $('#sub').textContent = L.sub[mode];
+    $('#howto').textContent = L.howto;
     $('#langSel').value = locale;
     document.querySelector('.seg').setAttribute('aria-label', L.mode.label);
     const segs = document.querySelectorAll('.seg button');
@@ -786,19 +757,10 @@ header h1 span{color:var(--gold)}
     segs[1].textContent = L.mode.opposites;
     $('#checkBtn').textContent = L.btn.check;
     $('#hintBtn').textContent = L.btn.hint;
-    $('#shuffleBtn').textContent = L.btn.scatter;
-    $('#fieldCap').textContent = L.fieldCap;
+    $('#resetBtn').textContent = L.btn.reset;
     $('#chant').textContent = L.bonds.join(' · ');
     paintSound();
-    slots.forEach((s, i) => {
-      s.emoji.setAttribute('aria-label', L.blankEmoji(i + 1));
-      s.label.setAttribute('aria-label', L.blankLabel(i + 1));
-    });
-    chips.forEach(c => {
-      const id = c.dataset.fn;
-      c.setAttribute('aria-label', c.dataset.kind === 'emoji' ? L.fnEmoji(nameOf(id)) : L.fnPair(nameOf(id), id));
-      if (c.dataset.kind === 'label') c.innerHTML = `<b>${nameOf(id)}</b><span>${id}</span>`;
-    });
+    slots.forEach((_, i) => { renderSlot('emoji', i); renderSlot('label', i); });
     renderBonds();
     afterChange();
   }
@@ -812,13 +774,13 @@ header h1 span{color:var(--gold)}
   langSel.addEventListener('change', () => {
     locale = LOCALES[langSel.value] ? langSel.value : 'en';
     try { localStorage.setItem('compass-locale', locale); } catch {}
+    closePicker(false);
     applyLocale();
     Sound.init(); Sound.tick(centerX(langSel));
   });
 
   applyLocale();
   renderBonds(true);
-  requestAnimationFrame(scatterAll);
 })();
 </script>
 </body>

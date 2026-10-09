@@ -1,9 +1,10 @@
 # The Compass · MBTI Cognitive Functions Quiz
 
 > An interactive, single-page browser game for learning Jung's eight cognitive
-> functions and the four attitude pairs. Drag function pieces onto a compass
-> ring, check your arrangement, and reveal each opposite pair. Free, no login,
-> no tracking. Sounds are synthesised in the browser.
+> functions and the four attitude pairs. Tap function slots on a compass ring —
+> emoji slots bloom a circular wheel of choices, name slots open a smooth
+> dropdown — then check your arrangement and reveal each opposite pair.
+> Free, no login, no tracking. Sounds are synthesised in the browser.
 
 ## What it teaches
 
@@ -28,11 +29,14 @@ types that use it as dominant or auxiliary:
 
 ## How to play
 
-1. Scatter 16 pieces (8 emojis + 8 names) on the field.
-2. Place each emoji and its name on the compass ring.
-3. Press **Check** — green stays, rose moves. In "Opposites only" mode any
+1. Tap an empty emoji circle on the ring — a circular wheel of the eight
+   functions blooms around it; tap one to place it.
+2. Tap an empty name pill — a smooth dropdown lists the eight names.
+3. Picking a function already used elsewhere swaps the two slots, so every
+   function appears exactly once per ring half.
+4. Press **Check** — green stays, rose moves. In "Opposites only" mode any
    rotation is correct as long as each pair faces its true opposite.
-4. **Hint** places one function; **Scatter again** reshuffles.
+5. **Hint** places one function; **Reset** clears the ring.
 
 ## Locales
 
