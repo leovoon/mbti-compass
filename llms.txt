@@ -1,0 +1,47 @@
+# The Compass · MBTI Cognitive Functions Quiz
+
+> An interactive, single-page browser game for learning Jung's eight cognitive
+> functions and the four attitude pairs. Drag function pieces onto a compass
+> ring, check your arrangement, and reveal each opposite pair. Free, no login,
+> no tracking. Sounds are synthesised in the browser.
+
+## What it teaches
+
+Eight cognitive functions, each with an emoji, an archetype name, and the MBTI
+types that use it as dominant or auxiliary:
+
+- **Ni — Seer** 🔮 (INFJ · INTJ) — introverted intuition
+- **Ti — Architect** 🧩 (INTP · ISTP) — introverted thinking
+- **Si — Keeper** 📜 (ISFJ · ISTJ) — introverted sensing
+- **Te — General** ⚙️ (ENTJ · ESTJ) — extraverted thinking
+- **Se — Surfer** 🏄 (ESFP · ESTP) — extraverted sensing
+- **Fe — Host** 🤝 (ENFJ · ESFJ) — extraverted feeling
+- **Ne — Inventor** 🎈 (ENFP · ENTP) — extraverted intuition
+- **Fi — Monk** 🕯️ (INFP · ISFP) — introverted feeling
+
+## The four attitude pairs (opposites across the centre)
+
+1. **Far & Near** — Ni ↔ Se
+2. **New & Known** — Ne ↔ Si
+3. **True & Together** — Ti ↔ Fe
+4. **Works & Worth** — Te ↔ Fi
+
+## How to play
+
+1. Scatter 16 pieces (8 emojis + 8 names) on the field.
+2. Place each emoji and its name on the compass ring.
+3. Press **Check** — green stays, rose moves. In "Opposites only" mode any
+   rotation is correct as long as each pair faces its true opposite.
+4. **Hint** places one function; **Scatter again** reshuffles.
+
+## Locales
+
+English (default, auto-detected), 繁體中文, 简体中文, 日本語, 한국어, Español,
+Français, Deutsch, Português (BR). Switch with the language menu; choice is
+remembered locally.
+
+## Meta
+
+- Single static page, works without a server: https://mbti-compass.pages.dev/
+- No cookies, no analytics, no accounts.
+- Unofficial. Not affiliated with MBTI® or The Myers-Briggs Company.
