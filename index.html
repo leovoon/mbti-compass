@@ -133,7 +133,7 @@ header h1 span{color:var(--gold)}
 @media (max-width:560px){.chip.l{font-size:12px;gap:4px}.chip.l span{font-size:10.5px}}
 
 /* ---------- radial wheel picker ---------- */
-#veil{position:fixed;inset:0;z-index:80;background:rgba(5,4,14,.48);
+#veil{position:fixed;inset:0;z-index:80;background:rgba(5,4,14,.34);
   opacity:0;pointer-events:none;transition:opacity .18s ease}
 #veil.on{opacity:1;pointer-events:auto}
 #hub{position:absolute;left:0;top:0;width:0;height:0}
@@ -159,10 +159,11 @@ header h1 span{color:var(--gold)}
 #drop{position:fixed;z-index:85;display:none;
   left:0;right:0;bottom:0;margin:0 auto;
   width:min(460px,100%);padding:8px 8px calc(10px + env(safe-area-inset-bottom,0px));
-  border-radius:22px 22px 0 0;border:1px solid var(--glass2);border-bottom:0;
-  background:rgba(17,14,40,.96);
-  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
-  box-shadow:0 -18px 50px rgba(0,0,0,.55);
+  border-radius:22px 22px 0 0;
+  border:1px solid rgba(255,255,255,.16);border-bottom:0;
+  background:linear-gradient(180deg,rgba(34,30,72,.44),rgba(12,10,30,.57));
+  -webkit-backdrop-filter:blur(9px) saturate(150%);backdrop-filter:blur(9px) saturate(150%);
+  box-shadow:0 -18px 50px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.14);
   max-height:min(64vh,430px);overflow:auto}
 #drop.on{display:block;animation:sheetIn .3s cubic-bezier(.2,.9,.25,1)}
 @keyframes sheetIn{from{transform:translateY(100%)}to{transform:none}}
