@@ -167,8 +167,9 @@ header h1 span{color:var(--gold)}
   border:1px solid rgba(255,255,255,.16);border-bottom:0;
   background:linear-gradient(180deg,rgba(34,30,72,.44),rgba(12,10,30,.57));
   -webkit-backdrop-filter:blur(9px) saturate(150%);backdrop-filter:blur(9px) saturate(150%);
-  box-shadow:0 -18px 50px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.14)}
-#drop.on{display:block;animation:sheetIn .34s cubic-bezier(.16,1,.3,1)}
+  box-shadow:0 -18px 50px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.14);
+  transition:height .34s cubic-bezier(.16,1,.3,1)}
+#drop.on{display:flex;flex-direction:column;animation:sheetIn .34s cubic-bezier(.16,1,.3,1)}
 @keyframes sheetIn{from{transform:translateY(100%)}to{transform:none}}
 #drop::after{content:"";position:absolute;top:-11px;left:var(--tx,50%);
   border:11px solid transparent;border-bottom:12px solid rgb(30,26,64);
@@ -177,7 +178,7 @@ header h1 span{color:var(--gold)}
 @keyframes tailIn{
   from{opacity:0;transform:translateX(-50%) translateY(10px)}
   to{opacity:1;transform:translateX(-50%)}}
-.dlist{max-height:min(64vh,410px);overflow:auto;
+.dlist{flex:1 1 auto;min-height:0;overflow:auto;
   -webkit-overflow-scrolling:touch}
 #drop button{display:flex;width:100%;gap:12px;align-items:center;padding:12px 14px;
   border:0;border-radius:14px;background:transparent;color:var(--ink);
@@ -535,6 +536,7 @@ header h1 span{color:var(--gold)}
     open = null;
     veil.classList.remove('on');
     drop.classList.remove('on');
+    drop.style.height = '';
     slot.classList.remove('open-slot');
     slot.setAttribute('aria-expanded', 'false');
     const hubKids = [...hub.children];
@@ -583,6 +585,15 @@ header h1 span{color:var(--gold)}
   function openDrop(i) {
     const slot = slots[i].label, cur = state.label[i];
     const sRect = slot.getBoundingClientRect();
+    const GAP = 4, MINH = 236;
+    let sBottom = sRect.bottom;
+    const need = sBottom + GAP + MINH - innerHeight;
+    if (need > 0) {
+      const maxY = document.documentElement.scrollHeight - innerHeight;
+      const actual = Math.min(need, Math.max(0, maxY - scrollY));
+      if (actual > 1) window.scrollBy({top: actual, behavior: 'smooth'});
+      sBottom -= actual;
+    }
     drop.textContent = '';
     const list = document.createElement('div'); list.className = 'dlist';
     FN_KEYS.forEach((id, k) => {
@@ -596,6 +607,7 @@ header h1 span{color:var(--gold)}
       list.append(b);
     });
     drop.append(list);
+    drop.style.height = Math.max(MINH, innerHeight - sBottom - GAP) + 'px';
     drop.classList.add('on');
     veil.classList.add('on');
     const dRect = drop.getBoundingClientRect();
