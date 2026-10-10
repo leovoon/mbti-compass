@@ -1,0 +1,42 @@
+/* ---------- info card (native <dialog>) ---------- */
+#info{padding:0;border:0;background:transparent;color:var(--text);overflow:visible;
+  width:min(380px,calc(100% - 28px));max-height:calc(100dvh - 28px)}
+#info::backdrop{background:rgba(6,4,18,.6);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);
+  animation:fadeIn .3s ease}
+#info.closing::backdrop{opacity:0;transition:opacity .18s}
+@keyframes fadeIn{from{opacity:0}}
+#info:focus{outline:none}
+
+.info-card{position:relative;padding:22px 20px 18px;border-radius:30px;text-align:center;overflow:auto;max-height:inherit;
+  border:1px solid rgba(255,255,255,.14);
+  background:linear-gradient(180deg,rgba(46,36,104,.92),rgba(16,12,40,.96));
+  box-shadow:0 30px 80px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.16)}
+
+.info-art{width:132px;height:132px;margin:-4px auto 0;padding:12px;border-radius:50%;
+  background:radial-gradient(circle at 50% 58%,color-mix(in oklab,var(--c) 42%,transparent),transparent 68%)}
+.info-art .mascot .eyes{animation-duration:4.2s}
+
+#info .ih{font-family:var(--display);font-variation-settings:"SOFT" 100;font-weight:600;font-size:25px;margin:6px 0 0;color:var(--gold);line-height:1.15}
+#info .ih small{display:block;font-family:var(--body);font-size:13px;color:var(--muted);letter-spacing:.03em;margin-top:4px;font-weight:500}
+#info .iw{display:inline-block;margin:12px 0 0;padding:5px 16px;border-radius:999px;font-size:14px;font-weight:700;letter-spacing:.02em;
+  color:var(--ink);background:var(--c);box-shadow:0 4px 0 color-mix(in oklab,var(--c) 55%,#000),0 8px 22px -6px var(--c)}
+#info .id{margin:14px auto 0;max-width:34ch;color:var(--text);line-height:1.55;font-size:15px;text-wrap:pretty}
+#info .sub{margin:16px 0 8px;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+#info .stack{display:inline-flex;align-items:center;gap:7px;margin:12px 0 0;font-weight:700;letter-spacing:.04em;color:var(--text)}
+#info .stack i{width:10px;height:10px;border-radius:50%}
+#info .stack span{color:var(--muted);font-weight:400}
+
+.links{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+#info .sub + .links{margin-top:0}
+.link{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:16px;cursor:pointer;text-align:left;
+  border:1px solid color-mix(in oklab,var(--c) 30%,transparent);
+  background:color-mix(in oklab,var(--c) 10%,rgba(255,255,255,.03));
+  transition:transform .3s var(--spring),background .2s,border-color .2s}
+.link:hover,.link:focus-visible{transform:translateY(-2px);border-color:var(--c);outline:none;
+  background:color-mix(in oklab,var(--c) 18%,rgba(255,255,255,.03))}
+.link:hover .mascot{animation:wiggle .5s ease-in-out}
+.link .mini{width:38px;height:38px;flex:none;vertical-align:0}
+.link small{display:block;font-size:11px;color:var(--muted);letter-spacing:.04em}
+.link b{display:block;font-size:13.5px;font-weight:650;line-height:1.2}
+
+.info-close{margin-top:16px}

@@ -1,0 +1,91 @@
+/* ---------- the compass board ---------- */
+.board{position:relative;width:min(100%,620px);aspect-ratio:1;margin:12px auto 0;
+  --es:74px;--lw:124px;--lh:32px}
+@media (max-width:560px){.board{--es:56px;--lw:98px;--lh:28px}}
+.board > svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+
+/* soft halo behind the ring; flares once when all 16 are placed */
+.board::before{content:"";position:absolute;left:50%;top:48%;width:76%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;
+  background:radial-gradient(circle,rgba(122,99,230,.16),rgba(122,99,230,.05) 55%,transparent 70%);pointer-events:none}
+.stage.all .board::before{animation:flare 1.4s var(--settle)}
+@keyframes flare{30%{scale:1.12;filter:brightness(2.2)}}
+
+.board .ring{fill:none;stroke:rgba(255,255,255,.09);stroke-width:.3;stroke-dasharray:.6 1.5}
+.board .ring.inner{stroke:rgba(245,212,145,.1);stroke-dasharray:.3 1.2}
+.board .track{stroke:var(--line);stroke-width:.35;stroke-linecap:round;stroke-dasharray:.8 1.2;transition:opacity .6s}
+/* gold beams draw outward from the hub when a pair is solved */
+.board .beam line{stroke:var(--gold);stroke-width:.7;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;
+  transition:stroke-dashoffset 0s}
+.board .beam.solved line{stroke-dashoffset:0;transition:stroke-dashoffset .75s cubic-bezier(.3,.6,.2,1) var(--d,0s);
+  filter:drop-shadow(0 0 1.2px rgba(245,212,145,.95))}
+.board .hub{fill:var(--gold);transform-box:fill-box;transform-origin:center;opacity:.85}
+.board.won .hub{animation:hubWin 3s var(--settle) both}
+@keyframes hubWin{0%{transform:scale(1)}25%{transform:scale(2.4) rotate(45deg);filter:drop-shadow(0 0 2px var(--gold))}
+  100%{transform:scale(1.5) rotate(90deg);filter:drop-shadow(0 0 1.5px var(--gold))}}
+
+/* ---------- nodes and slots ---------- */
+.node{position:absolute;width:0;height:0;
+  transition:opacity .5s ease calc(var(--i) * 55ms + .1s),scale .8s var(--spring) calc(var(--i) * 55ms + .1s)}
+body:not(.ready) .node{opacity:0;scale:.4}
+
+.slot{position:absolute;left:0;top:0;padding:0;cursor:pointer;color:inherit;
+  border:1.5px dashed rgba(244,239,255,.24);background:rgba(15,11,40,.82);
+  touch-action:manipulation;-webkit-touch-callout:none;
+  transition:border-color .25s,background .3s,box-shadow .35s,scale .4s var(--spring)}
+.slot.emoji{width:var(--es);height:var(--es);border-radius:50%;translate:-50% -50%;display:grid;place-items:center}
+.slot.label{width:var(--lw);height:var(--lh);border-radius:999px;translate:-50% calc(var(--es) / 2 + 9px);display:flex}
+.slot.emoji:not(.filled)::after{content:"";width:6px;height:6px;border-radius:50%;background:rgba(244,239,255,.18);
+  box-shadow:0 0 0 6px rgba(244,239,255,.03)}
+.slot:hover{border-color:rgba(245,212,145,.55)}
+.slot.emoji:hover{scale:1.07}
+.slot:active{scale:.95}
+.slot:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+.slot.filled{border-style:solid;border-color:color-mix(in oklab,var(--c) 45%,transparent)}
+.slot.emoji.filled{background:
+  radial-gradient(circle at 50% 62%,color-mix(in oklab,var(--c) 34%,transparent),transparent 68%),rgba(15,11,40,.9);
+  box-shadow:0 12px 26px -12px color-mix(in oklab,var(--c) 75%,transparent)}
+.slot.label.filled{background:linear-gradient(180deg,color-mix(in oklab,var(--c) 16%,rgba(15,11,40,.9)),rgba(15,11,40,.9))}
+
+.slot.open-slot{border-color:var(--gold);border-style:solid;background:rgba(245,212,145,.12);
+  box-shadow:0 0 0 3px rgba(245,212,145,.2),0 0 24px rgba(245,212,145,.45);
+  animation:slotGlow 1.5s ease-in-out infinite alternate}
+@keyframes slotGlow{to{box-shadow:0 0 0 5px rgba(245,212,145,.3),0 0 36px rgba(245,212,145,.65)}}
+
+/* verdicts arrive in a clockwise sweep (--d), in time with the chimes */
+.slot.ok,.slot.bad{transition-delay:var(--d,0s)}
+.slot.ok{border:1.5px solid var(--ok);box-shadow:0 0 0 4px rgba(127,230,180,.14),0 0 18px rgba(127,230,180,.25);
+  animation:okPop .5s var(--spring) var(--d,0s) both}
+.slot.bad{border:1.5px solid var(--bad);box-shadow:0 0 0 4px rgba(255,143,163,.14);
+  animation:shake .42s ease-in-out var(--d,0s) both}
+@keyframes okPop{40%{scale:1.1}}
+@keyframes shake{25%{transform:translateX(-5px) rotate(-2deg)}75%{transform:translateX(5px) rotate(2deg)}}
+.slot.hinted{animation:hinted 1.4s ease-out}
+@keyframes hinted{0%{box-shadow:0 0 0 0 rgba(245,212,145,.75)}100%{box-shadow:0 0 0 16px rgba(245,212,145,0)}}
+
+/* press-and-hold: a gold ring fills around the slot, the slot sinks a little */
+@property --p{syntax:"<angle>";inherits:false;initial-value:0deg}
+.slot::before{content:"";position:absolute;inset:-6px;border-radius:inherit;pointer-events:none;opacity:0;
+  border:2.5px solid var(--gold);
+  -webkit-mask:conic-gradient(#000 var(--p),transparent 0);mask:conic-gradient(#000 var(--p),transparent 0)}
+.slot.holding{scale:.93;transition:scale .48s var(--quick)}
+.slot.holding::before{opacity:1;animation:holdFill .48s linear forwards}
+@keyframes holdFill{to{--p:360deg}}
+
+/* ---------- values inside slots ---------- */
+.chip{pointer-events:none;line-height:1}
+.chip.e{width:86%;height:86%;display:block}
+.chip.e .mascot{animation:bob 4.6s ease-in-out infinite;animation-delay:var(--d,0s)}
+@keyframes bob{50%{transform:translateY(-3%) rotate(-2deg)}}
+.chip.l{width:100%;height:100%;border-radius:999px;display:flex;justify-content:center;align-items:center;gap:6px;
+  font-size:13.5px;white-space:nowrap;padding:0 8px}
+.chip.l .dot,#drop .dot{width:8px;height:8px;border-radius:50%;flex:none;background:var(--c);box-shadow:0 0 8px var(--c)}
+.chip.l b{font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.chip.l span{color:var(--gold);font-size:11.5px;letter-spacing:.05em;font-weight:600}
+@media (max-width:560px){.chip.l{font-size:12px;gap:4px;padding:0 6px}.chip.l span{font-size:10.5px}.chip.l .dot{display:none}}
+
+/* ---------- win ---------- */
+.board.won .ring{stroke:rgba(245,212,145,.35);transition:stroke 1.2s}
+.board.won .slot.emoji{box-shadow:0 0 0 2px color-mix(in oklab,var(--c) 70%,transparent),0 0 30px color-mix(in oklab,var(--c) 60%,transparent)}
+.spark{position:absolute;width:8px;height:8px;pointer-events:none;z-index:5;background:var(--c);border-radius:2px;
+  clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}

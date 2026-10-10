@@ -1,4 +1,6 @@
-window.LOCALES = {
+import type { Locale } from './types';
+
+export const LOCALES: Record<string, Locale> = {
   en: {
     langName: "English",
     docTitle: "The Compass · MBTI 8 Cognitive Functions Quiz",
@@ -10,6 +12,11 @@ window.LOCALES = {
     mode: { label: "Mode", exact: "Exact picture", opposites: "Opposites only" },
     btn: { check: "Check", hint: "Hint", reset: "Reset", soundOn: "Turn sound on", soundOff: "Mute sound" },
     howto: "Tap a slot — circles open a wheel, pills open a list",
+    howtoHold: "All placed — press and hold any mascot or name to meet it",
+    close: "Close",
+    leads: "Leads in",
+    stack: "Leads with · backed by",
+    types: { title: "Meet the sixteen", sub: "Every type is a little object, led by one function and backed by another. Tap one to meet it." },
     place: n => `${n} / 16 placed`,
     bonds: ["Far & Near", "New & Known", "True & Together", "Works & Worth"],
     bondHint: "Join a line to reveal this bond",

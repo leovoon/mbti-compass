@@ -1,0 +1,43 @@
+/* ---------- mascot sticker style (see src/art/kit.ts) ---------- */
+.mascot{display:block;width:100%;height:100%;overflow:visible}
+.mascot :is(path,rect,circle,ellipse){
+  stroke:var(--ink);stroke-width:3.6;stroke-linejoin:round;stroke-linecap:round;paint-order:stroke}
+.mascot .m{fill:var(--c)}
+.mascot .s{fill:var(--c2)}
+.mascot .a{fill:var(--a)}
+.mascot .cr{fill:var(--cream)}
+.mascot .ink{fill:var(--ink);stroke:none}
+.mascot .ns{stroke:none}
+.mascot .ln{fill:none}
+.mascot .out{stroke:var(--line-out,#cfc5f2)}   /* lines outside a body would vanish into the night */
+.mascot .thin{stroke-width:2.4;opacity:.55}
+.mascot .hl{fill:#fff;stroke:none;opacity:.42}
+.mascot .hl.ring{fill:none;stroke:#fff;stroke-width:3;opacity:.22}
+.mascot .hl-line{fill:none;stroke:#fff;stroke-width:4;opacity:.42}
+.mascot .glint{fill:#fff;stroke:none}
+.mascot .blush{fill:#ff6f9f;stroke:none;opacity:.5}
+.mascot .mouth{stroke-width:2.6}
+.mascot .mouth-o{fill:#7a2340;stroke:var(--ink);stroke-width:2.2}
+.mascot .stripe{fill:none;stroke:var(--c2);stroke-width:5}
+.mascot .wave{fill:none;stroke:#86c8ff;stroke-width:4.5}
+.mascot .arm{stroke-width:4.4}
+.mascot .string{stroke-width:2.6}
+.mascot .fl{fill:#ffcf5a}
+.mascot .fl2{fill:#fff4d6}
+.mascot .steam{fill:none;stroke:var(--cream);stroke-width:3;opacity:.6}
+.mascot .grid{fill:none;stroke:var(--c2);stroke-width:2.2}
+.mascot .ray{fill:none;stroke:var(--cream);stroke-width:3.6;opacity:.85}
+.mascot .stem{fill:none;stroke:#78c88a;stroke-width:4.4}
+.mascot .cherry{fill:#ff5c6c}
+
+/* life: blink, flicker, float — all slow, small, and staggered by --d */
+.mascot .eyes{transform-box:fill-box;transform-origin:center;
+  animation:blink 6.5s infinite;animation-delay:var(--d,0s)}
+@keyframes blink{0%,93%,100%{transform:none}95.5%{transform:scaleY(.12)}}
+.mascot .flame,.mascot .exhaust{transform-box:fill-box;transform-origin:50% 100%;animation:flicker 1.6s ease-in-out infinite}
+@keyframes flicker{
+  0%,100%{transform:scale(1,1) rotate(0)}
+  30%{transform:scale(.94,1.06) rotate(-3deg)}
+  60%{transform:scale(1.04,.95) rotate(2deg)}}
+.mascot .spark4{transform-box:fill-box;transform-origin:center;animation:twinkle 2.8s ease-in-out infinite;animation-delay:var(--d,0s)}
+@keyframes twinkle{50%{transform:scale(.55) rotate(25deg);opacity:.6}}

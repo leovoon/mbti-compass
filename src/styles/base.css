@@ -1,0 +1,103 @@
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+html{background:var(--bg1);color-scheme:dark}
+body{min-height:100vh;font-family:var(--body);color:var(--text);
+  background:
+    radial-gradient(900px 560px at 50% -8%,#3a2c86 0%,transparent 70%),
+    radial-gradient(1400px 900px at 50% 0%,var(--bg2) 0%,var(--bg1) 55%,var(--bg0) 100%) fixed;
+  -webkit-font-smoothing:antialiased;
+  user-select:none;-webkit-user-select:none;
+  -webkit-tap-highlight-color:transparent}
+button,select{font:inherit;color:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- sky: twinkling stars + two slow aurora clouds ---------- */
+.sky{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.sky i{position:absolute;border-radius:50%;background:#fff;opacity:var(--o);animation:tw 6s ease-in-out infinite}
+@keyframes tw{50%{opacity:calc(var(--o) * .2)}}
+.aurora{position:absolute;width:60vmax;height:60vmax;border-radius:50%;filter:blur(70px);opacity:.22}
+.aurora.a1{left:-18vmax;top:-12vmax;background:radial-gradient(circle,#7a63e6,transparent 65%);animation:drift1 38s ease-in-out infinite alternate}
+.aurora.a2{right:-22vmax;top:30vh;background:radial-gradient(circle,#36ab9c,transparent 65%);opacity:.14;animation:drift2 46s ease-in-out infinite alternate}
+@keyframes drift1{to{transform:translate(14vmax,10vmax) scale(1.15)}}
+@keyframes drift2{to{transform:translate(-12vmax,-8vmax) scale(.9)}}
+
+.app{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:30px 18px 64px}
+
+/* ---------- header ---------- */
+.top{text-align:center}
+.logo{width:34px;height:34px;color:var(--gold);display:block;margin:0 auto 6px;
+  filter:drop-shadow(0 0 10px rgba(245,212,145,.45));animation:spin 60s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+h1{font-family:var(--display);font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:620;
+  font-size:clamp(34px,5.4vw,54px);line-height:1;letter-spacing:-.01em;margin:0}
+h1 span{color:var(--gold);font-style:italic;font-weight:560}
+.sub{color:var(--muted);margin:10px auto 0;max-width:56ch;line-height:1.55;font-size:15px;text-align:center;text-wrap:pretty}
+
+/* ---------- controls ---------- */
+.controls{display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center;justify-content:center;margin:22px 0 4px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center}
+
+.seg{--x:0;position:relative;display:grid;grid-template-columns:1fr 1fr;
+  background:rgba(0,0,0,.22);border:1px solid var(--glass2);border-radius:999px;padding:3px;
+  box-shadow:inset 0 2px 6px rgba(0,0,0,.35)}
+.seg::before{content:"";position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;
+  background:linear-gradient(180deg,rgba(245,212,145,.26),rgba(245,212,145,.14));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 2px 8px rgba(0,0,0,.3);
+  transform:translateX(calc(var(--x) * 100%));transition:transform .45s var(--spring)}
+.seg button{position:relative;border:0;background:transparent;color:var(--muted);padding:8px 16px;border-radius:999px;
+  font-size:14px;cursor:pointer;white-space:nowrap;transition:color .25s}
+.seg button[aria-pressed="true"]{color:var(--gold)}
+
+/* toy buttons: a soft bottom lip you can press down */
+.btn{font-size:14px;padding:9px 17px;border-radius:999px;cursor:pointer;color:var(--text);
+  background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.04));
+  border:1px solid var(--glass2);
+  box-shadow:0 3px 0 rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.1);
+  transition:transform .14s var(--quick),box-shadow .14s var(--quick),background .2s,border-color .2s}
+.btn:hover{background:linear-gradient(180deg,rgba(255,255,255,.15),rgba(255,255,255,.06));border-color:rgba(255,255,255,.22)}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.1)}
+.btn:focus-visible,.seg button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.btn.primary{background:linear-gradient(180deg,#fbe3ad,#e8bf6e);color:#2a1c06;border-color:transparent;font-weight:680;
+  box-shadow:0 3px 0 #9c742f,0 8px 22px -6px rgba(245,212,145,.5),inset 0 1px 0 rgba(255,255,255,.6)}
+.btn.primary:active{box-shadow:0 1px 0 #9c742f,inset 0 1px 0 rgba(255,255,255,.6)}
+.btn.primary.ready{animation:ready 1.8s ease-in-out infinite}
+@keyframes ready{50%{box-shadow:0 3px 0 #9c742f,0 0 0 7px rgba(245,212,145,.16),0 8px 30px -4px rgba(245,212,145,.7),inset 0 1px 0 rgba(255,255,255,.6)}}
+.btn.icon{padding:7px 10px;line-height:0}
+.btn.icon svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.btn.icon .spk{fill:currentColor;stroke:none}
+.btn.icon .wv{transition:opacity .25s,transform .35s var(--spring);transform-origin:12px 12px}
+.btn.icon .w2{transition-delay:.05s}
+.btn.icon .mute{opacity:0;transition:opacity .2s}
+#soundBtn[data-on="false"] .wv{opacity:0;transform:scale(.6)}
+#soundBtn[data-on="false"] .mute{opacity:1}
+.lang select{appearance:none;-webkit-appearance:none;padding-right:30px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23aaa2d6' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E"),linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.04));
+  background-repeat:no-repeat;background-position:right 12px center,0 0;background-size:10px 7px,auto}
+.lang select option{background:var(--bg2);color:var(--text)}
+.status{color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums;min-width:90px;text-align:center}
+
+.howto{color:var(--muted);text-align:center;font-size:13.5px;margin:14px auto 0;letter-spacing:.01em;max-width:52ch;
+  transition:color .4s}
+.howto.glow{color:var(--gold);animation:howIn .6s var(--settle)}
+@keyframes howIn{from{opacity:0;transform:translateY(6px)}}
+
+/* ---------- text below the board ---------- */
+.result{min-height:28px;margin:14px 0 0;text-align:center;font-size:15px;color:var(--text)}
+.result em{color:var(--gold);font-style:normal;font-weight:600}
+.mini{display:inline-block;width:1.7em;height:1.7em;vertical-align:-.5em}
+.chant{text-align:center;font-family:var(--display);font-variation-settings:"SOFT" 100;font-style:italic;color:var(--gold);
+  font-size:clamp(17px,2.4vw,22px);letter-spacing:.02em;margin:6px 0 0;opacity:0;transform:translateY(8px);filter:blur(4px);
+  transition:opacity 1.2s,transform 1.2s var(--settle),filter 1.2s}
+.chant.show{opacity:1;transform:none;filter:none}
+
+.foot{margin:44px auto 0;max-width:64ch;text-align:center;color:var(--muted);font-size:13px;line-height:1.6}
+.foot p{margin:6px 0}
+
+/* ---------- first paint: everything settles in ---------- */
+.top,.controls,.howto{transition:opacity .7s var(--settle),transform .8s var(--settle)}
+body:not(.ready) :is(.top,.controls,.howto){opacity:0;transform:translateY(10px)}
+.controls{transition-delay:.08s}.howto{transition-delay:.16s}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}

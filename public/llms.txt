@@ -1,0 +1,71 @@
+# The Compass · MBTI Cognitive Functions Quiz
+
+> An interactive, single-page browser game for learning Jung's eight cognitive
+> functions and the four attitude pairs. Tap function slots on a compass ring —
+> mascot slots bloom a circular wheel of choices, name slots open a smooth
+> dropdown — then check your arrangement and reveal each opposite pair.
+> Once everything is placed, press and hold any slot to meet the cast.
+> Free, no login, no tracking. Sounds are synthesised in the browser.
+
+## The style: a midnight toybox
+
+Every function and type is drawn as a **little object mascot** — no people.
+One shared sticker language: chunky midnight outlines, cream highlights, the
+same face across the whole cast. Each function owns a hue (violet Ni, teal Ti,
+amber Si, sky Te, gold Se, pink Fe, lilac Ne, coral Fi) and every type is
+painted in its leading function's colour with the backing function as accent.
+The mascots blink, flames flicker, sparkles twinkle — small and slow.
+
+## What it teaches
+
+Eight cognitive functions, each with a mascot, an archetype name, and the MBTI
+types that use it as dominant or auxiliary:
+
+- **Ni — Seer** crystal ball (INFJ · INTJ) — introverted intuition
+- **Ti — Architect** puzzle piece (INTP · ISTP) — introverted thinking
+- **Si — Keeper** scroll (ISFJ · ISTJ) — introverted sensing
+- **Te — General** gear (ENTJ · ESTJ) — extraverted thinking
+- **Se — Surfer** surfboard on a wave (ESFP · ESTP) — extraverted sensing
+- **Fe — Host** heart with open arms (ENFJ · ESFJ) — extraverted feeling
+- **Ne — Inventor** balloon (ENFP · ENTP) — extraverted intuition
+- **Fi — Monk** candle (INFP · ISFP) — introverted feeling
+
+## Meet the sixteen
+
+Below the compass, a gallery shows all sixteen types as object mascots —
+Moonwatch, Stargazer, Puzzlebox, Fixer, Teapot, Ledger, Rook, Clockwork,
+Disco, Rocket, Sunny, Cupcake, Kite, Spark, Toadstool, Bloom. Tap any card
+for its story and its function stack; tap again to hop between linked cards.
+
+## The four attitude pairs (opposites across the centre)
+
+1. **Far & Near** — Ni ↔ Se
+2. **New & Known** — Ne ↔ Si
+3. **True & Together** — Ti ↔ Fe
+4. **Works & Worth** — Te ↔ Fi
+
+## How to play
+
+1. Tap an empty mascot circle on the ring — a circular wheel of the eight
+   functions blooms around it; tap one and it flies into place.
+2. Tap an empty name pill — a smooth dropdown lists the eight names.
+3. Picking a function already used elsewhere swaps the two slots, so every
+   function appears exactly once per ring half.
+4. Press **Check** — the verdict sweeps clockwise in time with the chimes;
+   green stays, rose shakes. In "Opposites only" mode any rotation is correct
+   as long as each pair faces its true opposite.
+5. **Hint** places one function; **Reset** tumbles everything back to the hub.
+6. Once all 16 slots are filled, **press and hold** any mascot or name
+   (or focus it and press `i`) to meet it.
+
+## Locales
+
+English (default, auto-detected), 繁體中文, 简体中文, 日本語, 한국어, Español,
+Français, Deutsch, Português (BR). Switch with the language menu; choice is
+remembered locally.
+
+## Meta
+
+- Single static page, works without a server: https://mbti-compass.slower.workers.dev/
+- No cookies, no analytics, no accounts.
+- Unofficial. Not affiliated with MBTI® or The Myers-Briggs Company.
