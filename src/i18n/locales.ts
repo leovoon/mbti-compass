@@ -5,6 +5,7 @@ export const LOCALES: Record<string, Locale> = {
     langName: "English",
     docTitle: "The Compass · MBTI 8 Cognitive Functions Quiz",
     h1: 'The <span>Compass</span>',
+    tagline: "A hands-on way to learn the eight functions behind every MBTI type.",
     sub: {
       exact: "Rebuild the compass as you saw it: 🔮 at the top, every soul facing its opposite across the centre.",
       opposites: "Any arrangement works, as long as each emoji has its own name and every line joins two true opposites."
@@ -19,7 +20,7 @@ export const LOCALES: Record<string, Locale> = {
     types: { title: "Meet the sixteen", sub: "Every type is a little object, led by one function and backed by another. Tap one to meet it." },
     tour: {
       steps: [
-        { title: "Welcome to the Compass", body: "Eight ways of thinking, drawn as eight little mascots. Put each one on the ring so it faces its true opposite. It takes about two minutes." },
+        { title: "Learn the eight functions behind MBTI", body: "This isn't a personality test. It's a hands-on way to learn the eight cognitive functions that make up every type, and which ones are opposites. Great if you know your four letters and want to see what's underneath. Takes about two minutes." },
         { title: "Pick a mascot", body: "Tap the glowing circle. A wheel of eight mascots opens around it. Tap any one to drop it in." },
         { title: "Give it a name", body: "Now tap the pill under it and choose the name that belongs to that mascot. Not sure? Guess. Check will tell you." },
         { title: "Face the opposites", body: "Each function has one partner it pulls against. Fill all eight so every pair sits straight across the centre." },
@@ -52,6 +53,7 @@ export const LOCALES: Record<string, Locale> = {
     langName: "繁體中文",
     docTitle: "羅盤 · 八功能心理測驗",
     h1: '<span>羅盤</span>',
+    tagline: "動手認識每種 MBTI 類型背後的八種功能。",
     sub: {
       exact: "照你看到的樣子重組羅盤：🔮 在上方，每個靈魂都與正對面的彼此相望。",
       opposites: "任何排列都可以，只要每個 emoji 配上自己的名字，且每條線都連上真正的對立。"
@@ -66,7 +68,7 @@ export const LOCALES: Record<string, Locale> = {
     types: { title: "認識十六型", sub: "每個類型都是一件小物件，由一個功能主導、另一個輔助。點一下，與它相見。" },
     tour: {
       steps: [
-        { title: "歡迎來到羅盤", body: "八種思考方式，畫成八個小角色。把每一個放上圓環，讓它正對自己真正的對立。大約兩分鐘。" },
+        { title: "認識 MBTI 背後的八種功能", body: "這不是性格測驗，而是一種動手學習的方式：認識構成每種類型的八種認知功能，以及哪些彼此對立。如果你知道自己的四個字母，想看看底下是什麼，這很適合你。大約兩分鐘。" },
         { title: "挑一個角色", body: "點一下發光的圓圈，八個角色會在周圍展開。點任何一個放進去。" },
         { title: "幫它取名", body: "再點它下方的膠囊，選出屬於這個角色的名字。不確定？先猜，檢查會告訴你。" },
         { title: "面對對立", body: "每個功能都有一個與它相拉的夥伴。放滿八個，讓每一對都隔著中心正對。" },
@@ -127,6 +129,7 @@ export const LOCALES: Record<string, Locale> = {
     langName: "简体中文",
     docTitle: "指南针 · 八功能心理测试",
     h1: '<span>指南针</span>',
+    tagline: "动手认识每种 MBTI 类型背后的八种功能。",
     sub: {
       exact: "照你看到的样子重组罗盘：🔮 在最上方，每个灵魂都与正对面的彼此相望。",
       opposites: "任何排列都可以，只要每个 emoji 配上自己的名字，且每条线都连上真正的对立。"
@@ -141,7 +144,7 @@ export const LOCALES: Record<string, Locale> = {
     types: { title: "认识十六型", sub: "每个类型都是一件小物件，由一个功能主导、另一个辅助。点一下，与它相见。" },
     tour: {
       steps: [
-        { title: "欢迎来到罗盘", body: "八种思考方式，画成八个小角色。把每一个放上圆环，让它正对自己真正的对立。大约两分钟。" },
+        { title: "认识 MBTI 背后的八种功能", body: "这不是性格测试，而是一种动手学习的方式：认识构成每种类型的八种认知功能，以及哪些彼此对立。如果你知道自己的四个字母，想看看底下是什么，这很适合你。大约两分钟。" },
         { title: "挑一个角色", body: "点一下发光的圆圈，八个角色会在周围展开。点任何一个放进去。" },
         { title: "给它起名", body: "再点它下方的胶囊，选出属于这个角色的名字。不确定？先猜，检查会告诉你。" },
         { title: "面对对立", body: "每个功能都有一个与它相拉的伙伴。放满八个，让每一对都隔着中心正对。" },
@@ -202,6 +205,7 @@ export const LOCALES: Record<string, Locale> = {
     langName: "日本語",
     docTitle: "コンパス · 8功能クイズ",
     h1: '<span>コンパス</span>',
+    tagline: "すべての MBTI タイプの奥にある八つの機能を、手で覚える。",
     sub: {
       exact: "見たままにコンパスを組み直そう：🔮 は上に、各魂は真逆の相手と向き合う。",
       opposites: "どの並びでもいい。各絵文字に正しい名前がつき、線が真逆の二つを結んでいれば。"
@@ -216,7 +220,7 @@ export const LOCALES: Record<string, Locale> = {
     types: { title: "十六の型に会う", sub: "どの型も小さな器。ひとつの機能が導き、もうひとつが支えます。タップして会ってみて。" },
     tour: {
       steps: [
-        { title: "コンパスへようこそ", body: "八つの考え方を、八体の小さなマスコットに。それぞれを輪に置いて、本当の対と向き合わせましょう。二分ほどです。" },
+        { title: "MBTI の奥にある八つの機能を学ぶ", body: "これは性格診断ではありません。すべての型をつくる八つの認知機能と、どれが対になるかを手で覚えるためのものです。自分の四文字を知っていて、その奥を見てみたい人にぴったり。二分ほどです。" },
         { title: "マスコットを選ぶ", body: "光る円をタップすると、八体のマスコットが周りに開きます。どれかをタップして置きます。" },
         { title: "名前をつける", body: "次にその下のピルをタップして、そのマスコットに合う名前を選びます。迷ったら当ててみて。判定が教えてくれます。" },
         { title: "対と向き合う", body: "どの機能にも引き合う相手がひとつあります。八つ置いて、すべての組が中心をはさんで向き合うように。" },
@@ -277,6 +281,7 @@ export const LOCALES: Record<string, Locale> = {
     langName: "한국어",
     docTitle: "나침반 · 8기능 퀴즈",
     h1: '<span>나침반</span>',
+    tagline: "모든 MBTI 유형 뒤에 있는 여덟 기능을 직접 해보며 배워요.",
     sub: {
       exact: "본 그대로 나침반을 다시 세우세요: 🔮 은 위에, 각 영혼은 정반대와 마주합니다.",
       opposites: "아무 배열이나 가능합니다. 각 이모지에 제 이름이 붙고, 모든 선이 진짜 반대를 잇기만 하면."
@@ -291,7 +296,7 @@ export const LOCALES: Record<string, Locale> = {
     types: { title: "열여섯 유형 만나기", sub: "모든 유형은 작은 조각이에요. 하나의 기능이 이끌고 다른 하나가 받쳐줍니다. 눌러서 만나보세요." },
     tour: {
       steps: [
-        { title: "나침반에 오신 걸 환영해요", body: "여덟 가지 생각 방식을 여덟 마스코트로 그렸어요. 하나씩 고리에 놓아 진짜 반대와 마주 보게 하세요. 2분이면 돼요." },
+        { title: "MBTI 뒤의 여덟 기능 배우기", body: "성격 검사가 아니에요. 모든 유형을 이루는 여덟 가지 인지 기능과, 어떤 기능끼리 반대인지를 직접 해보며 배우는 방법이에요. 내 네 글자를 알고 그 밑을 들여다보고 싶다면 딱이에요. 2분이면 돼요." },
         { title: "마스코트 고르기", body: "빛나는 원을 누르면 마스코트 여덟이 둘레에 펼쳐져요. 하나를 눌러 넣으세요." },
         { title: "이름 붙이기", body: "이제 아래 알약을 눌러 그 마스코트에 맞는 이름을 고르세요. 모르겠다면 찍어보세요. 확인이 알려줘요." },
         { title: "반대와 마주 보기", body: "모든 기능에는 서로 끌어당기는 짝이 하나 있어요. 여덟을 다 채워 모든 짝이 중심을 사이에 두고 마주 보게 하세요." },
@@ -352,6 +357,7 @@ export const LOCALES: Record<string, Locale> = {
     langName: "Español",
     docTitle: "La Brújula · Quiz de 8 funciones",
     h1: 'La <span>Brújula</span>',
+    tagline: "Una forma práctica de aprender las ocho funciones detrás de cada tipo MBTI.",
     sub: {
       exact: "Reconstruye la brújula tal como la viste: 🔮 arriba, cada alma frente a su opuesto.",
       opposites: "Cualquier disposición sirve, mientras cada emoji tenga su nombre y cada línea una dos verdaderos opuestos."
@@ -366,7 +372,7 @@ export const LOCALES: Record<string, Locale> = {
     types: { title: "Conoce a los dieciséis", sub: "Cada tipo es un pequeño objeto, guiado por una función y respaldado por otra. Toca uno para conocerlo." },
     tour: {
       steps: [
-        { title: "Bienvenido a la Brújula", body: "Ocho formas de pensar, dibujadas como ocho pequeños personajes. Coloca cada uno en el anillo frente a su verdadero opuesto. Lleva unos dos minutos." },
+        { title: "Aprende las ocho funciones detrás del MBTI", body: "Esto no es un test de personalidad. Es una forma práctica de aprender las ocho funciones cognitivas que forman cada tipo, y cuáles son opuestas. Ideal si conoces tus cuatro letras y quieres ver qué hay debajo. Lleva unos dos minutos." },
         { title: "Elige un personaje", body: "Toca el círculo que brilla. Se abre una rueda con ocho personajes. Toca uno para colocarlo." },
         { title: "Ponle nombre", body: "Ahora toca la cápsula de abajo y elige el nombre de ese personaje. ¿No estás seguro? Adivina. Comprobar te lo dirá." },
         { title: "Frente a frente", body: "Cada función tiene una pareja con la que tira en sentido contrario. Llena los ocho para que cada par quede justo al otro lado del centro." },
@@ -427,6 +433,7 @@ export const LOCALES: Record<string, Locale> = {
     langName: "Français",
     docTitle: "La Boussole · Quiz des 8 fonctions",
     h1: 'La <span>Boussole</span>',
+    tagline: "Une façon concrète d'apprendre les huit fonctions derrière chaque type MBTI.",
     sub: {
       exact: "Reconstruis la boussole comme tu l'as vue : 🔮 en haut, chaque âme face à son opposé.",
       opposites: "Tout agencement convient, pourvu que chaque émoji ait son nom et que chaque ligne relie deux véritables opposés."
@@ -441,7 +448,7 @@ export const LOCALES: Record<string, Locale> = {
     types: { title: "Rencontre les seize", sub: "Chaque type est un petit objet, mené par une fonction et appuyé par une autre. Touche l'un pour le rencontrer." },
     tour: {
       steps: [
-        { title: "Bienvenue sur la Boussole", body: "Huit façons de penser, dessinées en huit petits personnages. Place chacun sur l'anneau face à son vrai opposé. Comptez deux minutes." },
+        { title: "Apprends les huit fonctions derrière le MBTI", body: "Ce n'est pas un test de personnalité. C'est une façon concrète d'apprendre les huit fonctions cognitives qui composent chaque type, et lesquelles s'opposent. Idéal si tu connais tes quatre lettres et veux voir ce qu'il y a dessous. Comptez deux minutes." },
         { title: "Choisis un personnage", body: "Touche le cercle qui brille. Une roue de huit personnages s'ouvre autour. Touches-en un pour le poser." },
         { title: "Donne-lui un nom", body: "Touche maintenant la pastille dessous et choisis le nom de ce personnage. Pas sûr ? Devine. Vérifier te le dira." },
         { title: "Face aux opposés", body: "Chaque fonction a un partenaire qui tire dans l'autre sens. Remplis les huit pour que chaque paire se fasse face de part et d'autre du centre." },
@@ -502,6 +509,7 @@ export const LOCALES: Record<string, Locale> = {
     langName: "Deutsch",
     docTitle: "Der Kompass · 8-Funktionen-Quiz",
     h1: 'Der <span>Kompass</span>',
+    tagline: "Ein praktischer Weg, die acht Funktionen hinter jedem MBTI Typ zu lernen.",
     sub: {
       exact: "Baue den Kompass so wieder, wie du ihn gesehen hast: 🔮 oben, jede Seele ihrem Gegenüber gegenüber.",
       opposites: "Jede Anordnung geht, solange jedes Emoji seinen Namen hat und jede Linie zwei echte Gegensätze verbindet."
@@ -516,7 +524,7 @@ export const LOCALES: Record<string, Locale> = {
     types: { title: "Triff die sechzehn", sub: "Jeder Typ ist ein kleines Ding, geführt von einer Funktion und gestützt von einer anderen. Tippe eines an, um es zu treffen." },
     tour: {
       steps: [
-        { title: "Willkommen beim Kompass", body: "Acht Denkweisen, gezeichnet als acht kleine Figuren. Setze jede so auf den Ring, dass sie ihrem wahren Gegenstück gegenübersteht. Dauert etwa zwei Minuten." },
+        { title: "Lerne die acht Funktionen hinter MBTI", body: "Das ist kein Persönlichkeitstest. Es ist ein praktischer Weg, die acht kognitiven Funktionen zu lernen, aus denen jeder Typ besteht, und welche Gegensätze sind. Ideal, wenn du deine vier Buchstaben kennst und sehen willst, was darunter liegt. Dauert etwa zwei Minuten." },
         { title: "Wähle eine Figur", body: "Tippe auf den leuchtenden Kreis. Ein Rad aus acht Figuren öffnet sich. Tippe eine an, um sie abzulegen." },
         { title: "Gib ihr einen Namen", body: "Tippe nun auf die Pille darunter und wähle den Namen, der zu dieser Figur gehört. Unsicher? Rate. Prüfen sagt es dir." },
         { title: "Den Gegensätzen gegenüber", body: "Jede Funktion hat einen Partner, der in die andere Richtung zieht. Fülle alle acht, sodass jedes Paar sich über die Mitte gegenübersteht." },
@@ -577,6 +585,7 @@ export const LOCALES: Record<string, Locale> = {
     langName: "Português (BR)",
     docTitle: "A Bússola · Quiz das 8 funções",
     h1: 'A <span>Bússola</span>',
+    tagline: "Um jeito prático de aprender as oito funções por trás de cada tipo MBTI.",
     sub: {
       exact: "Reconstrua a bússola como você a viu: 🔮 no topo, cada alma frente ao seu oposto.",
       opposites: "Qualquer disposição serve, desde que cada emoji tenha seu nome e cada linha una dois verdadeiros opostos."
@@ -591,7 +600,7 @@ export const LOCALES: Record<string, Locale> = {
     types: { title: "Conheça os dezesseis", sub: "Cada tipo é um pequeno objeto, guiado por uma função e apoiado por outra. Toque em um para conhecê-lo." },
     tour: {
       steps: [
-        { title: "Boas-vindas à Bússola", body: "Oito jeitos de pensar, desenhados como oito pequenos personagens. Coloque cada um no anel de frente para o seu verdadeiro oposto. Leva uns dois minutos." },
+        { title: "Aprenda as oito funções por trás do MBTI", body: "Isto não é um teste de personalidade. É um jeito prático de aprender as oito funções cognitivas que formam cada tipo, e quais são opostas. Ótimo se você conhece suas quatro letras e quer ver o que há por baixo. Leva uns dois minutos." },
         { title: "Escolha um personagem", body: "Toque no círculo que brilha. Uma roda com oito personagens se abre. Toque em um para colocá-lo." },
         { title: "Dê um nome", body: "Agora toque na cápsula embaixo e escolha o nome desse personagem. Na dúvida? Chute. Conferir vai te dizer." },
         { title: "De frente para os opostos", body: "Cada função tem um par que puxa para o outro lado. Preencha os oito para que cada par fique bem do outro lado do centro." },

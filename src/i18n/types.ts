@@ -4,6 +4,8 @@ export interface Locale {
   langName: string;
   docTitle: string;
   h1: string;
+  /** one line under the title saying what this is for; always visible */
+  tagline?: string;
   sub: Record<Mode, string>;
   mode: { label: string } & Record<Mode, string>;
   btn: { check: string; hint: string; reset: string; soundOn: string; soundOff: string };

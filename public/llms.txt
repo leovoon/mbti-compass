@@ -7,6 +7,12 @@
 > Once everything is placed, press and hold any slot to meet the cast.
 > Free, no login, no tracking. Sounds are synthesised in the browser.
 
+## Who it's for
+
+Not a personality test: it won't tell you your type. It's for people who
+know their four letters and want to understand the eight cognitive functions
+underneath, and for anyone memorising the functions and their opposites.
+
 ## The style: a midnight toybox
 
 Every function and type is drawn as a **little object mascot**, never people.

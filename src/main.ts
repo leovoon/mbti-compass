@@ -118,6 +118,7 @@ function applyLocale() {
   document.documentElement.lang = locale();
   document.title = L.docTitle;
   $('#h1').innerHTML = L.h1;
+  $('#tagline').textContent = tx('tagline');
   $('#sub').textContent = L.sub[state.mode];
   langSel.value = locale();
   $('.seg').setAttribute('aria-label', L.mode.label);
