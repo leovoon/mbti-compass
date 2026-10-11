@@ -1,7 +1,7 @@
 import { FN, TYPES, type FnId, type TypeId } from '../data';
 import { fnArt } from '../art/functions';
 import { typeArt } from '../art/types';
-import { nameOf, tx } from '../i18n';
+import { nameOf, t, tx } from '../i18n';
 import { animate, spring, SETTLE } from '../motion';
 
 const dlg = document.querySelector<HTMLDialogElement>('#info')!;
@@ -18,20 +18,22 @@ const typeChip = (id: TypeId) =>
   `<span class="mini">${typeArt(id)}</span><span><small>${id}</small><b>${TYPES[id].n}</b></span></button>`;
 
 function fnHTML(id: FnId) {
-  const F = FN[id];
+  const F = FN[id], I = t().fnInfo?.[id];
+  const full = I?.full ?? F.full, w = I?.w ?? F.w, d = I?.d ?? F.d;
   return `<div class="info-art" style="--c:${F.c}">${fnArt(id, 'big')}</div>` +
-    `<h2 class="ih" id="infoTitle">${id} · ${nameOf(id)}<small>${F.full}</small></h2>` +
-    `<div class="iw" style="--c:${F.c}">${F.w}</div>` +
-    `<p class="id">${F.d}</p>` +
+    `<h2 class="ih" id="infoTitle">${id} · ${nameOf(id)}<small>${full}</small></h2>` +
+    `<div class="iw" style="--c:${F.c}">${w}</div>` +
+    `<p class="id">${d}</p>` +
     `<h3 class="sub">${tx('leads')}</h3><div class="links">${F.t.map(typeChip).join('')}</div>`;
 }
 function typeHTML(id: TypeId) {
   const T = TYPES[id], c = FN[T.dom].c;
   const [lead, back] = tx('stack').split('·').map(s => s.trim());
+  const d = t().typeInfo?.[id]?.d ?? T.d;
   return `<div class="info-art" style="--c:${c}">${typeArt(id)}</div>` +
     `<h2 class="ih" id="infoTitle">${id}<small>${T.n}</small></h2>` +
     `<div class="stack"><i style="background:${c}"></i>${T.dom} <span>+</span> ${T.aux}<i style="background:${FN[T.aux].c}"></i></div>` +
-    `<p class="id">${T.d}</p>` +
+    `<p class="id">${d}</p>` +
     `<div class="links">${fnChip(T.dom, lead ?? '')}${fnChip(T.aux, back ?? '')}</div>`;
 }
 

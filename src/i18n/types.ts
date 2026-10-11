@@ -1,4 +1,4 @@
-import type { FnId, Mode } from '../data';
+import type { FnId, Mode, TypeId } from '../data';
 
 export interface Locale {
   langName: string;
@@ -18,6 +18,10 @@ export interface Locale {
   bonds: string[];
   bondHint: string;
   fn: Record<FnId, string>;
+  /** localised info-card content; falls back to the English FN/TYPES data */
+  fnInfo?: Record<FnId, { full: string; w: string; d: string }>;
+  /** localised type descriptions; character names stay English (proper nouns) */
+  typeInfo?: Partial<Record<TypeId, { d: string }>>;
   fnEmoji: (n: string) => string;
   fnPair: (n: string, id: string) => string;
   blankEmoji: (i: number) => string;

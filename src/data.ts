@@ -70,7 +70,7 @@ export interface MbtiType {
 }
 
 export const TYPES: Record<TypeId, MbtiType> = {
-  INFJ: { n: 'Moonwatch',  dom: 'Ni', aux: 'Fe', d: 'A quiet crescent that sees the tide turning long before anyone else — and wants everyone to make it to shore.' },
+  INFJ: { n: 'Moonwatch',  dom: 'Ni', aux: 'Fe', d: 'A quiet crescent that sees the tide turning long before anyone else, and wants everyone to make it to shore.' },
   INTJ: { n: 'Stargazer',  dom: 'Ni', aux: 'Te', d: 'A telescope fixed on one far star, already drawing the route to reach it.' },
   INTP: { n: 'Puzzlebox',  dom: 'Ti', aux: 'Ne', d: 'A cube that keeps turning itself over, sure there is a cleaner solution on the next face.' },
   ISTP: { n: 'Fixer',      dom: 'Ti', aux: 'Se', d: 'A trusty wrench: calm, precise, and happiest with something real to take apart.' },

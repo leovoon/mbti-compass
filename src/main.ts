@@ -8,13 +8,13 @@ import './styles/info.css';
 import './styles/sections.css';
 
 import type { FnId, Kind, Mode } from './data';
-import { LOCALES, locale, setLocale, t, tx } from './i18n';
-import { allPlaced, assign, placedCount, state } from './state';
+import { LOCALES, locale, setLocale, t } from './i18n';
+import { allPlaced, assign, clearVerified, placedCount, state } from './state';
 import { Sound } from './sound';
-import { buildBoard, centerX, chipOf, renderAll, renderSlot, slots } from './ui/board';
+import { buildBoard, centerX, chipOf, paintKnown, renderAll, renderSlot, slots } from './ui/board';
 import { closePicker, isOpen, openPicker, setChooser } from './ui/pickers';
-import { check, clearMarks, hint, renderBonds, resetBoard } from './ui/game';
-import { closeInfo, refreshInfo, showFn } from './ui/info';
+import { check, clearMarks, hint, paintHowto, renderBonds, resetBoard } from './ui/game';
+import { refreshInfo, showFn } from './ui/info';
 import { renderGallery } from './ui/gallery';
 
 const $ = <T extends HTMLElement = HTMLElement>(s: string) => document.querySelector<T>(s)!;
@@ -37,6 +37,7 @@ buildBoard({
   hold(kind, i) {
     const id = state[kind][i];
     if (!id) return;
+    getSelection()?.removeAllRanges(); // a long press may have started a text selection
     closePicker(false);
     Sound.reveal(i, centerX(slots[i][kind]));
     showFn(id, slots[i][kind]);
@@ -63,10 +64,9 @@ function afterChange() {
   $('#status').textContent = t().place(n);
   $('#checkBtn').classList.toggle('ready', n === 16);
   const all = allPlaced();
-  $('#howto').textContent = all ? tx('howtoHold') : t().howto;
-  $('#howto').classList.toggle('glow', all);
+  paintHowto();
   if (all && !wasAll) document.querySelector('.stage')!.classList.add('all');
-  if (!all) { document.querySelector('.stage')!.classList.remove('all'); void closeInfo(); }
+  if (!all) document.querySelector('.stage')!.classList.remove('all');
   wasAll = all;
 }
 
@@ -76,6 +76,8 @@ document.querySelectorAll<HTMLButtonElement>('.seg button').forEach(b => b.addEv
   document.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
   $('.seg').style.setProperty('--x', b.dataset.mode === 'exact' ? '0' : '1');
   $('#sub').textContent = t().sub[state.mode];
+  // "correct" means something else in the other mode, so verified seals don't carry over
+  clearVerified(); paintKnown(); paintHowto();
   closePicker(false); clearMarks(); Sound.init(); Sound.tick(centerX(b));
 }));
 $('#checkBtn').addEventListener('click', () => { Sound.init(); check(); });

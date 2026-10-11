@@ -1,10 +1,10 @@
 import { BONDS, FN, RING, type FnId } from '../data';
 import { fnArt } from '../art/functions';
-import { nameOf, t } from '../i18n';
-import { anyPlaced, assign, clearAll, getNode, state } from '../state';
+import { nameOf, t, tx } from '../i18n';
+import { anyHoldable, anyPlaced, assign, clearAll, clearVerified, getNode, state, verified } from '../state';
 import { CHECK_STEP, Sound, type MarkState } from '../sound';
 import { animate, burst, reduced, spring } from '../motion';
-import { board, centerX, chipOf, CX, CY, renderSlot, slots } from './board';
+import { board, centerX, chipOf, CX, CY, paintKnown, renderSlot, slots } from './board';
 import { closePicker } from './pickers';
 
 const $ = <T extends HTMLElement = HTMLElement>(s: string) => document.querySelector<T>(s)!;
@@ -19,6 +19,13 @@ export function nodeCorrect(i: number) {
 }
 
 const mark = (slot: HTMLElement, ok: boolean) => slot.classList.add(ok ? 'ok' : 'bad');
+
+/** the line under the controls: how to place, or (once anything can be held) how to meet */
+export function paintHowto() {
+  const h = $('#howto'), on = anyHoldable();
+  h.textContent = on ? tx('howtoHold') : t().howto;
+  h.classList.toggle('glow', on);
+}
 
 let winTimer = 0;
 export function clearMarks(hard = false) {
@@ -83,6 +90,14 @@ export function check() {
       : (s.emoji.classList.contains('ok') || s.label.classList.contains('ok')) ? 'ok' : 'none');
   Sound.check(states, solvedLines, correct === 8);
   const res = $('#result');
+  // whatever this check proved correct stays holdable until that slot itself changes
+  clearVerified();
+  slots.forEach((s, i) => {
+    for (const kind of ['emoji', 'label'] as const)
+      if (s[kind].classList.contains('ok')) verified[kind][i] = state[kind][i];
+  });
+  paintKnown();
+  paintHowto();
   if (correct === 8) win(after + solvedLines.length * .16);
   else if (correct === 0 && !anyPlaced()) res.textContent = t().result.empty;
   else res.innerHTML = t().result.partial(correct, state.mode);

@@ -1,7 +1,14 @@
 /* ---------- the compass board ---------- */
 .board{position:relative;width:min(100%,620px);aspect-ratio:1;margin:12px auto 0;
+  --bw:min(620px,100vw - 36px);--sgap:6px;
   --es:74px;--lw:124px;--lh:32px}
-@media (max-width:560px){.board{--es:56px;--lw:98px;--lh:28px}}
+/* phones: the board bleeds a little into the page padding and the ring opens up
+   (see board.ts), so slots can stay comfortably tappable without touching */
+@media (max-width:560px){.board{width:calc(100% + 20px);margin-inline:-10px;
+  --bw:calc(100vw - 16px);--sgap:6px;
+  --es:clamp(42px,calc(var(--bw) * .14),58px);
+  --lw:clamp(78px,calc(var(--bw) * .255),98px);
+  --lh:clamp(24px,calc(var(--bw) * .068),28px)}}
 .board > svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 
 /* soft halo behind the ring; flares once when all 16 are placed */
@@ -26,14 +33,15 @@
 /* ---------- nodes and slots ---------- */
 .node{position:absolute;width:0;height:0;
   transition:opacity .5s ease calc(var(--i) * 55ms + .1s),scale .8s var(--spring) calc(var(--i) * 55ms + .1s)}
+body.holding, body.holding *{-webkit-user-select:none!important;user-select:none!important}
 body:not(.ready) .node{opacity:0;scale:.4}
 
-.slot{position:absolute;left:0;top:0;padding:0;cursor:pointer;color:inherit;
+.slot{position:absolute;left:0;top:0;padding:0;cursor:pointer;color:inherit;user-select:none;-webkit-user-select:none;
   border:1.5px dashed rgba(244,239,255,.24);background:rgba(15,11,40,.82);
   touch-action:manipulation;-webkit-touch-callout:none;
   transition:border-color .25s,background .3s,box-shadow .35s,scale .4s var(--spring)}
 .slot.emoji{width:var(--es);height:var(--es);border-radius:50%;translate:-50% -50%;display:grid;place-items:center}
-.slot.label{width:var(--lw);height:var(--lh);border-radius:999px;translate:-50% calc(var(--es) / 2 + 9px);display:flex}
+.slot.label{width:var(--lw);height:var(--lh);border-radius:999px;translate:-50% calc(var(--es) / 2 + var(--sgap));display:flex}
 .slot.emoji:not(.filled)::after{content:"";width:6px;height:6px;border-radius:50%;background:rgba(244,239,255,.18);
   box-shadow:0 0 0 6px rgba(244,239,255,.03)}
 .slot:hover{border-color:rgba(245,212,145,.55)}
@@ -60,6 +68,12 @@ body:not(.ready) .node{opacity:0;scale:.4}
   animation:shake .42s ease-in-out var(--d,0s) both}
 @keyframes okPop{40%{scale:1.1}}
 @keyframes shake{25%{transform:translateX(-5px) rotate(-2deg)}75%{transform:translateX(5px) rotate(2deg)}}
+/* proved correct by a check: a tiny gold seal says "you can hold me" */
+.slot.known:not(.ok):not(.bad){border-color:rgba(245,212,145,.6)}
+.slot.emoji.known::after{content:"";position:absolute;right:-1px;top:-1px;width:12px;height:12px;border-radius:50%;
+  background:var(--gold);box-shadow:0 0 0 2px var(--bg1),0 0 10px rgba(245,212,145,.8);
+  animation:seal .5s var(--spring) both}
+@keyframes seal{from{scale:0}}
 .slot.hinted{animation:hinted 1.4s ease-out}
 @keyframes hinted{0%{box-shadow:0 0 0 0 rgba(245,212,145,.75)}100%{box-shadow:0 0 0 16px rgba(245,212,145,0)}}
 
