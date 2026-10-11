@@ -14,6 +14,12 @@ export interface Locale {
   leads?: string;
   stack?: string;
   types?: { title: string; sub: string };
+  /** first-visit tour: six steps, in order (welcome, pick, name, goal, check, hold) */
+  tour?: {
+    steps: { title: string; body: string }[];
+    start: string; next: string; back: string; done: string; skip: string; help: string;
+    of: (a: number, b: number) => string;
+  };
   place: (n: number) => string;
   bonds: string[];
   bondHint: string;

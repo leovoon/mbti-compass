@@ -56,7 +56,11 @@ for its story and its function stack; tap again to hop between linked cards.
    as long as each pair faces its true opposite.
 5. **Hint** places one function; **Reset** tumbles everything back to the hub.
 6. Once all 16 slots are filled, **press and hold** any mascot or name
-   (or focus it and press `i`) to meet it.
+   (or focus it and press `i`) to meet it. A pair that a Check proves true
+   gets a gold seal and can be held right away.
+
+First visit opens a six-step guided tour that has you place your first
+mascot and name for real. It shows once; the **?** button replays it.
 
 ## Locales
 

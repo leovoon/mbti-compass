@@ -6,9 +6,10 @@ import './styles/board.css';
 import './styles/pickers.css';
 import './styles/info.css';
 import './styles/sections.css';
+import './styles/tour.css';
 
 import type { FnId, Kind, Mode } from './data';
-import { LOCALES, locale, setLocale, t } from './i18n';
+import { LOCALES, locale, setLocale, t, tx } from './i18n';
 import { allPlaced, assign, clearVerified, placedCount, state } from './state';
 import { Sound } from './sound';
 import { buildBoard, centerX, chipOf, paintKnown, renderAll, renderSlot, slots } from './ui/board';
@@ -16,6 +17,7 @@ import { closePicker, isOpen, openPicker, setChooser } from './ui/pickers';
 import { check, clearMarks, hint, paintHowto, renderBonds, resetBoard } from './ui/game';
 import { refreshInfo, showFn } from './ui/info';
 import { renderGallery } from './ui/gallery';
+import { maybeStartTour, startTour, tourNotify } from './ui/tour';
 
 const $ = <T extends HTMLElement = HTMLElement>(s: string) => document.querySelector<T>(s)!;
 
@@ -54,8 +56,10 @@ setChooser((kind: Kind, i: number, id: FnId, source: Element) => {
   if (moved !== null) renderSlot(kind, moved, oldHere ? { from: oldHere } : 'pop');
   clearMarks();
   afterChange();
-  if (!clearing)
+  if (!clearing) {
     Sound.place(i, kind, centerX(slots[i][kind]), state.emoji[i] === state.label[i] && !!state.emoji[i]);
+    tourNotify(kind, i);
+  }
 });
 
 let wasAll = false;
@@ -83,6 +87,7 @@ document.querySelectorAll<HTMLButtonElement>('.seg button').forEach(b => b.addEv
 $('#checkBtn').addEventListener('click', () => { Sound.init(); check(); });
 $('#hintBtn').addEventListener('click', () => { Sound.init(); hint(afterChange); });
 $('#resetBtn').addEventListener('click', () => { Sound.init(); resetBoard(afterChange); });
+$('#helpBtn').addEventListener('click', () => { Sound.init(); Sound.tick(centerX($('#helpBtn'))); startTour(); });
 
 const soundBtn = $<HTMLButtonElement>('#soundBtn');
 function paintSound() {
@@ -122,6 +127,8 @@ function applyLocale() {
   $('#checkBtn').textContent = L.btn.check;
   $('#hintBtn').textContent = L.btn.hint;
   $('#resetBtn').textContent = L.btn.reset;
+  const help = tx('tour').help;
+  $('#helpBtn').title = help; $('#helpBtn').setAttribute('aria-label', help);
   $('#chant').textContent = L.bonds.join(' · ');
   paintSound();
   renderAll();
@@ -134,3 +141,4 @@ function applyLocale() {
 applyLocale();
 renderBonds(true);
 requestAnimationFrame(() => document.body.classList.add('ready'));
+maybeStartTour();
