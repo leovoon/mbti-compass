@@ -1,122 +1,197 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>The Compass · MBTI 8 Cognitive Functions Quiz</title>
-<meta name="description" content="Interactive MBTI quiz: tap the eight Jungian cognitive functions onto a compass ring, then pair every opposite across the centre. Meet all sixteen types as little objects. Free, no signup, 9 languages.">
-<meta name="robots" content="index,follow">
-<meta name="theme-color" content="#0f0b28">
-<link rel="canonical" href="https://mbti-compass.slower.workers.dev/">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="The Compass">
-<meta property="og:title" content="The Compass · MBTI 8 Cognitive Functions Quiz">
-<meta property="og:description" content="Tap the eight Jungian cognitive functions onto a compass ring and pair every opposite. Meet the sixteen types as a cast of little objects. Free MBTI quiz in 9 languages.">
-<meta property="og:url" content="https://mbti-compass.slower.workers.dev/">
-<meta property="og:image" content="https://mbti-compass.slower.workers.dev/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:locale" content="en_US">
-<meta property="og:locale:alternate" content="zh_TW">
-<meta property="og:locale:alternate" content="zh_CN">
-<meta property="og:locale:alternate" content="ja_JP">
-<meta property="og:locale:alternate" content="ko_KR">
-<meta property="og:locale:alternate" content="es_ES">
-<meta property="og:locale:alternate" content="fr_FR">
-<meta property="og:locale:alternate" content="de_DE">
-<meta property="og:locale:alternate" content="pt_BR">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Compass · MBTI 8 Cognitive Functions Quiz">
-<meta name="twitter:description" content="Tap the eight Jungian cognitive functions onto a compass ring and pair every opposite.">
-<meta name="twitter:image" content="https://mbti-compass.slower.workers.dev/og-image.png">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "The Compass · MBTI Cognitive Functions Quiz",
-  "url": "https://mbti-compass.slower.workers.dev/",
-  "description": "Interactive browser quiz for Jung's eight cognitive functions and the four attitude pairs: Ni·Se, Ne·Si, Ti·Fe, Te·Fi. Tap each function onto a compass ring: mascot slots open a circular wheel, name slots a dropdown. Reveal every opposite pair and meet the sixteen types as a cast of object mascots.",
-  "applicationCategory": "EducationalApplication",
-  "genre": "quiz",
-  "operatingSystem": "Any",
-  "browserRequirements": "Requires JavaScript",
-  "inLanguage": ["en", "zh-TW", "zh-CN", "ja", "ko", "es", "fr", "de", "pt-BR"],
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-}
-</script>
-</head>
-<body>
-<div class="sky" aria-hidden="true"><b class="aurora a1"></b><b class="aurora a2"></b></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>The Compass · MBTI 8 Cognitive Functions Quiz</title>
+    <meta
+      name="description"
+      content="Interactive MBTI quiz: tap the eight Jungian cognitive functions onto a compass ring, then pair every opposite across the centre. Meet all sixteen types as little objects. Free, no signup, 9 languages."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#0f0b28" />
+    <link rel="canonical" href="https://mbti-compass.slower.workers.dev/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="The Compass" />
+    <meta property="og:title" content="The Compass · MBTI 8 Cognitive Functions Quiz" />
+    <meta
+      property="og:description"
+      content="Tap the eight Jungian cognitive functions onto a compass ring and pair every opposite. Meet the sixteen types as a cast of little objects. Free MBTI quiz in 9 languages."
+    />
+    <meta property="og:url" content="https://mbti-compass.slower.workers.dev/" />
+    <meta property="og:image" content="https://mbti-compass.slower.workers.dev/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="zh_TW" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    <meta property="og:locale:alternate" content="ko_KR" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:locale:alternate" content="pt_BR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Compass · MBTI 8 Cognitive Functions Quiz" />
+    <meta
+      name="twitter:description"
+      content="Tap the eight Jungian cognitive functions onto a compass ring and pair every opposite."
+    />
+    <meta name="twitter:image" content="https://mbti-compass.slower.workers.dev/og-image.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "The Compass · MBTI Cognitive Functions Quiz",
+        "url": "https://mbti-compass.slower.workers.dev/",
+        "description": "Interactive browser quiz for Jung's eight cognitive functions and the four attitude pairs: Ni·Se, Ne·Si, Ti·Fe, Te·Fi. Tap each function onto a compass ring: mascot slots open a circular wheel, name slots a dropdown. Reveal every opposite pair and meet the sixteen types as a cast of object mascots.",
+        "applicationCategory": "EducationalApplication",
+        "genre": "quiz",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "inLanguage": ["en", "zh-TW", "zh-CN", "ja", "ko", "es", "fr", "de", "pt-BR"],
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="sky" aria-hidden="true"><b class="aurora a1"></b><b class="aurora a2"></b></div>
 
-<main class="app">
-  <header class="top">
-    <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
-      <circle cx="32" cy="32" r="26" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="1.6" stroke-dasharray="2 3.4"/>
-      <path d="M32 8 L35 29 L56 32 L35 35 L32 56 L29 35 L8 32 L29 29 Z" fill="currentColor"/>
-      <circle cx="32" cy="32" r="3.4" fill="var(--bg1)" stroke="currentColor" stroke-width="1.6"/>
-    </svg>
-    <h1 id="h1">The <span>Compass</span></h1>
-    <p class="tagline" id="tagline">A hands-on way to learn the eight functions behind every MBTI type.</p>
-    <p class="sub" id="sub"></p>
-  </header>
+    <main class="app">
+      <header class="top">
+        <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
+          <circle
+            cx="32"
+            cy="32"
+            r="26"
+            fill="none"
+            stroke="currentColor"
+            stroke-opacity=".35"
+            stroke-width="1.6"
+            stroke-dasharray="2 3.4"
+          />
+          <path d="M32 8 L35 29 L56 32 L35 35 L32 56 L29 35 L8 32 L29 29 Z" fill="currentColor" />
+          <circle
+            cx="32"
+            cy="32"
+            r="3.4"
+            fill="var(--bg1)"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+        </svg>
+        <h1 id="h1">MBTI <span>Compass</span></h1>
+        <div class="header-actions">
+          <button
+            type="button"
+            class="btn icon"
+            id="soundBtn"
+            aria-pressed="true"
+            aria-label="Mute sound"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path class="spk" d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z" />
+              <path class="wv w1" d="M15.2 9.2a4 4 0 0 1 0 5.6" />
+              <path class="wv w2" d="M17.8 6.6a7.6 7.6 0 0 1 0 10.8" />
+              <path class="mute" d="M15.5 9.5l5 5m0-5l-5 5" />
+            </svg>
+          </button>
+          <label class="btn icon header-language" for="langSel">
+            <span class="sr" id="languageLabel">Language</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="10" cy="11" r="8" />
+              <ellipse cx="10" cy="11" rx="3.5" ry="8" />
+              <path d="M2 11h16m1 7 2 2 2-2" />
+            </svg>
+            <select id="langSel" aria-labelledby="languageLabel"></select>
+          </label>
+        </div>
+      </header>
+      <p class="sr" id="tagline">
+        A hands-on way to learn the eight functions behind every MBTI type.
+      </p>
+      <p class="sub" id="sub"></p>
 
-  <div class="controls">
-    <div class="seg" role="group" aria-label="Mode">
-      <button type="button" data-mode="exact" aria-pressed="false">Exact picture</button>
-      <button type="button" data-mode="opposites" aria-pressed="true">Opposites only</button>
-    </div>
-    <div class="actions">
-      <button type="button" class="btn primary" id="checkBtn">Check</button>
-      <button type="button" class="btn" id="hintBtn">Hint</button>
-      <button type="button" class="btn" id="resetBtn">Reset</button>
-      <button type="button" class="btn icon" id="soundBtn" title="Sound">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path class="spk" d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path class="wv w1" d="M15.2 9.2a4 4 0 0 1 0 5.6"/><path class="wv w2" d="M17.8 6.6a7.6 7.6 0 0 1 0 10.8"/><path class="mute" d="M15.5 9.5l5 5m0-5l-5 5"/></svg>
-      </button>
-      <button type="button" class="btn icon help" id="helpBtn" title="How to play" aria-label="How to play">?</button>
-      <label class="lang"><span class="sr">Language</span><select class="btn" id="langSel" aria-label="Language"></select></label>
-    </div>
-    <span class="status" id="status"></span>
-  </div>
+      <div class="controls">
+        <div class="actions">
+          <button type="button" class="btn primary" id="checkBtn">Check</button>
+          <button type="button" class="btn" id="hintBtn">Hint</button>
+          <button type="button" class="btn" id="resetBtn">Reset</button>
+          <button
+            type="button"
+            class="btn icon help"
+            id="helpBtn"
+            title="How to play"
+            aria-label="How to play"
+          >
+            ?
+          </button>
+        </div>
+        <span class="status" id="status"></span>
+      </div>
 
-  <p class="howto" id="howto"></p>
+      <p class="howto" id="howto"></p>
 
-  <section class="stage">
-    <div class="board" id="board">
-      <svg viewBox="0 0 100 100" id="lines" aria-hidden="true"></svg>
-    </div>
-  </section>
+      <section class="stage">
+        <div class="board" id="board">
+          <svg viewBox="0 0 100 100" id="lines" aria-hidden="true"></svg>
+        </div>
+      </section>
 
-  <p class="result" id="result" aria-live="polite"></p>
-  <p class="chant" id="chant">Far &amp; Near · New &amp; Known · True &amp; Together · Works &amp; Worth</p>
+      <p class="result" id="result" aria-live="polite"></p>
+      <p class="chant" id="chant">
+        Far &amp; Near · New &amp; Known · True &amp; Together · Works &amp; Worth
+      </p>
 
-  <ol class="bonds" id="bonds"></ol>
+      <p class="explore-entry">
+        <a class="btn" id="exploreLink" href="#explore">Explore functions &amp; types</a>
+      </p>
+      <ol class="bonds" id="bonds"></ol>
 
-  <section class="types-sec" aria-labelledby="typesTitle">
-    <h2 id="typesTitle">Meet the sixteen</h2>
-    <p class="sub" id="typesSub"></p>
-    <ul class="types" id="types"></ul>
-  </section>
+      <section class="functions-sec" id="explore" aria-labelledby="functionsTitle">
+        <h2 id="functionsTitle" tabindex="-1">Meet the eight</h2>
+        <ul class="function-gallery" id="functions"></ul>
+      </section>
 
-  <footer class="foot">
-    <p>Learn Jung's eight cognitive functions by hand. Place each one, then pair every opposite across the centre: Ni·Se, Ne·Si, Ti·Fe, Te·Fi.</p>
-    <p>Unofficial. Not affiliated with MBTI® or The Myers-Briggs Company.</p>
-  </footer>
-</main>
+      <section class="types-sec" aria-labelledby="typesTitle">
+        <h2 id="typesTitle">Meet the sixteen</h2>
+        <p class="sub" id="typesSub"></p>
+        <ul class="types" id="types"></ul>
+      </section>
 
-<div id="veil" aria-hidden="true"><div id="hub"></div></div>
-<div id="drop" role="listbox"></div>
+      <footer class="foot">
+        <p>
+          Learn Jung's eight cognitive functions by hand. Place each one, then pair every opposite
+          across the centre: Ni·Se, Ne·Si, Ti·Fe, Te·Fi.
+        </p>
+        <p>Unofficial. Not affiliated with MBTI® or The Myers-Briggs Company.</p>
+      </footer>
+    </main>
 
-<dialog id="info" aria-labelledby="infoTitle">
-  <div class="info-card">
-    <div class="info-body"></div>
-    <button type="button" class="btn info-close">Close</button>
-  </div>
-</dialog>
+    <div id="veil" aria-hidden="true"><div id="hub"></div></div>
+    <div id="drop" role="listbox"></div>
 
-<script type="module" src="/src/main.ts"></script>
-</body>
+    <dialog id="info" aria-labelledby="infoTitle">
+      <div class="info-card">
+        <div class="info-body" id="infoContent"></div>
+        <div class="info-actions">
+          <button
+            type="button"
+            class="btn info-flip"
+            aria-pressed="false"
+            aria-controls="infoContent"
+          >
+            Flip
+          </button>
+          <button type="button" class="btn info-close">Close</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

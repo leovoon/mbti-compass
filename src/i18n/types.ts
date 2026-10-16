@@ -1,4 +1,4 @@
-import type { FnId, Mode, TypeId } from '../data';
+import type { FnId, TypeId } from "../data";
 
 export interface Locale {
   langName: string;
@@ -6,8 +6,7 @@ export interface Locale {
   h1: string;
   /** one line under the title saying what this is for; always visible */
   tagline?: string;
-  sub: Record<Mode, string>;
-  mode: { label: string } & Record<Mode, string>;
+  sub: string;
   btn: { check: string; hint: string; reset: string; soundOn: string; soundOff: string };
   howto: string;
   /** shown once all 16 slots are filled; falls back to English */
@@ -19,7 +18,12 @@ export interface Locale {
   /** first-visit tour: six steps, in order (welcome, pick, name, goal, check, hold) */
   tour?: {
     steps: { title: string; body: string }[];
-    start: string; next: string; back: string; done: string; skip: string; help: string;
+    start: string;
+    next: string;
+    back: string;
+    done: string;
+    skip: string;
+    help: string;
     of: (a: number, b: number) => string;
   };
   place: (n: number) => string;
@@ -36,7 +40,7 @@ export interface Locale {
   blankLabel: (i: number) => string;
   result: {
     empty: string;
-    partial: (n: number, mode: Mode) => string;
+    partial: (n: number) => string;
     win: (checks: number, hints: number) => string;
     hintNone: string;
     hintOne: (glyph: string, name: string) => string;

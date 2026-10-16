@@ -1,5 +1,5 @@
-import { FN, type FnId } from '../data';
-import { face, gearPath, sparkle, svg } from './kit';
+import { FN, type FnId } from "../data";
+import { face, gearPath, sparkle, svg } from "./kit";
 
 /* The eight function mascots. Each one echoes the emoji the copy still
  * mentions (🔮 🧩 📜 ⚙️ 🏄 🤝 🎈 🕯️) so learned associations carry over. */
@@ -9,7 +9,8 @@ const ART: Record<FnId, () => string> = {
     `<path class="s" d="M30 76 H70 L65 90 H35 Z"/>` +
     `<circle class="m" cx="50" cy="45" r="30"/>` +
     `<ellipse class="hl" cx="37" cy="31" rx="6" ry="9.5" transform="rotate(30 37 31)"/>` +
-    sparkle(67, 28, 6) + sparkle(60, 19, 3) +
+    sparkle(67, 28, 6) +
+    sparkle(60, 19, 3) +
     face(50, 50),
 
   // 🧩 puzzle piece
@@ -24,7 +25,7 @@ const ART: Record<FnId, () => string> = {
     `<rect class="s" x="18" y="14" width="64" height="14" rx="7"/>` +
     `<rect class="s" x="18" y="74" width="64" height="14" rx="7"/>` +
     `<path class="ln thin" d="M34 38 H66 M34 66 H58"/>` +
-    face(50, 52, .95, 'calm'),
+    face(50, 52, 0.95, "calm"),
 
   // ⚙️ gear
   Te: () =>
@@ -38,7 +39,7 @@ const ART: Record<FnId, () => string> = {
     `<path class="stripe" d="M50 9 V83"/>` +
     `<ellipse class="hl" cx="43" cy="26" rx="3" ry="8"/></g>` +
     `<path class="wave" d="M6 86 Q16 76 26 86 T46 86 T66 86 T86 86 T100 84"/>` +
-    face(50, 48, .9, 'grin'),
+    face(50, 48, 0.9, "grin"),
 
   // 🤝 heart host with open arms
   Fe: () =>
@@ -54,7 +55,7 @@ const ART: Record<FnId, () => string> = {
     `<path class="s" d="M45 74 H55 L50 80 Z"/>` +
     `<ellipse class="m" cx="50" cy="42" rx="27" ry="32"/>` +
     `<ellipse class="hl" cx="38" cy="28" rx="5" ry="9" transform="rotate(25 38 28)"/>` +
-    face(50, 44, 1, 'grin'),
+    face(50, 44, 1, "grin"),
 
   // 🕯️ candle with a living flame
   Fi: () =>
@@ -64,14 +65,17 @@ const ART: Record<FnId, () => string> = {
     `<path class="ln out" d="M50 40 V33"/>` +
     `<g class="flame"><path class="fl" d="M50 6 C59 18 61 25 57 31 C54 35 46 35 43 31 C39 25 41 18 50 6 Z"/>` +
     `<path class="fl2 ns" d="M50 18 C54 24 54 28 52 30 C51 31 49 31 48 30 C46 28 46 24 50 18 Z"/></g>` +
-    face(50, 63, .9, 'calm'),
+    face(50, 63, 0.9, "calm"),
 };
 
 const cache = new Map<string, string>();
 /** inline SVG for a function mascot */
-export function fnArt(id: FnId, cls = '') {
-  const k = id + '|' + cls;
+export function fnArt(id: FnId, cls = "") {
+  const k = id + "|" + cls;
   let s = cache.get(k);
-  if (!s) { s = svg(ART[id](), { c: FN[id].c, c2: FN[id].c2 }, `fn-${id} ${cls}`); cache.set(k, s); }
+  if (!s) {
+    s = svg(ART[id](), { c: FN[id].c, c2: FN[id].c2 }, `fn-${id} ${cls}`);
+    cache.set(k, s);
+  }
   return s;
 }

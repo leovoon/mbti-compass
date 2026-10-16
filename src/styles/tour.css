@@ -1,35 +1,137 @@
 /* ---------- first-visit tour ---------- */
-.tour{position:fixed;inset:0;z-index:70;pointer-events:none;display:none}
-.tour.on{display:block}
+.tour {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  display: none;
+}
+.tour.on {
+  display: block;
+}
 /* the spotlight: a hole whose giant shadow is the dim. It glides between targets. */
-.tour-hole{position:fixed;border-radius:50%;
-  box-shadow:0 0 0 200vmax rgba(6,4,18,.66),0 0 0 2px rgba(245,212,145,.75),0 0 28px 4px rgba(245,212,145,.35);
-  transition:left .55s var(--settle),top .55s var(--settle),width .55s var(--settle),height .55s var(--settle),border-radius .55s var(--settle)}
-.tour-card{position:fixed;pointer-events:auto;padding:16px 18px 14px;border-radius:24px;
-  border:1px solid rgba(245,212,145,.3);color:var(--text);
-  background:linear-gradient(180deg,rgba(48,38,108,.97),rgba(18,13,44,.98));
-  box-shadow:0 24px 60px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.16);
-  transition:left .5s var(--settle),top .5s var(--settle),opacity .2s}
+.tour-hole {
+  position: fixed;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 200vmax rgba(6, 4, 18, 0.66),
+    0 0 0 2px rgba(245, 212, 145, 0.75),
+    0 0 28px 4px rgba(245, 212, 145, 0.35);
+  transition:
+    left 0.55s var(--settle),
+    top 0.55s var(--settle),
+    width 0.55s var(--settle),
+    height 0.55s var(--settle),
+    border-radius 0.55s var(--settle);
+}
+.tour-card {
+  position: fixed;
+  pointer-events: auto;
+  padding: 16px 18px 14px;
+  border-radius: 24px;
+  border: 1px solid rgba(245, 212, 145, 0.3);
+  color: var(--text);
+  background: linear-gradient(180deg, rgba(48, 38, 108, 0.97), rgba(18, 13, 44, 0.98));
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  transition:
+    left 0.5s var(--settle),
+    top 0.5s var(--settle),
+    opacity 0.2s;
+}
 /* a picker opened mid-tour sits above the dim; get the card out of its way */
-body:has(#veil.on) .tour-card{opacity:0;pointer-events:none}
-body:has(#veil.on) .tour-hole{box-shadow:0 0 0 200vmax rgba(6,4,18,0)}
+body:has(#veil.on) .tour-card {
+  opacity: 0;
+  pointer-events: none;
+}
+body:has(#veil.on) .tour-hole {
+  box-shadow: 0 0 0 200vmax rgba(6, 4, 18, 0);
+}
 
-.tour-top{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:22px}
-.tour-dots{display:flex;gap:5px}
-.tour-dots i{width:6px;height:6px;border-radius:999px;background:rgba(244,239,255,.22);transition:width .35s var(--spring),background .3s}
-.tour-dots i.past{background:rgba(245,212,145,.5)}
-.tour-dots i.on{width:18px;background:var(--gold)}
-.tour-skip{border:0;background:none;color:var(--muted);font-size:13px;cursor:pointer;padding:4px 2px}
-.tour-skip:hover{color:var(--text)}
-.tour-card h3{margin:10px 0 0;font-family:var(--display);font-variation-settings:"SOFT" 100;font-weight:600;font-size:21px;color:var(--gold);line-height:1.2}
-.tour-card p{margin:6px 0 0;font-size:14.5px;line-height:1.55;color:var(--text);text-wrap:pretty}
-.tour-card p b{color:var(--gold);font-weight:650}
-.tour-nav{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
-.tour-nav .btn{padding:8px 16px}
+.tour-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 22px;
+}
+.tour-dots {
+  display: flex;
+  gap: 5px;
+}
+.tour-dots i {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(244, 239, 255, 0.22);
+  transition:
+    width 0.35s var(--spring),
+    background 0.3s;
+}
+.tour-dots i.past {
+  background: rgba(245, 212, 145, 0.5);
+}
+.tour-dots i.on {
+  width: 18px;
+  background: var(--gold);
+}
+.tour-skip {
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px 2px;
+}
+.tour-skip:hover {
+  color: var(--text);
+}
+.tour-card h3 {
+  margin: 10px 0 0;
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 100;
+  font-weight: 600;
+  font-size: 21px;
+  color: var(--gold);
+  line-height: 1.2;
+}
+.tour-card p {
+  margin: 6px 0 0;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--text);
+  text-wrap: pretty;
+}
+.tour-card p b {
+  color: var(--gold);
+  font-weight: 650;
+}
+.tour-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 14px;
+}
+.tour-nav .btn {
+  padding: 8px 16px;
+}
 
 /* the live target breathes so it reads as "this, here" */
-body.touring .tour-target{animation:tourPulse 1.8s ease-in-out infinite}
-@keyframes tourPulse{50%{filter:brightness(1.25) drop-shadow(0 0 10px rgba(245,212,145,.55))}}
+body.touring .tour-target {
+  animation: tourPulse 1.8s ease-in-out infinite;
+}
+@keyframes tourPulse {
+  50% {
+    filter: brightness(1.25) drop-shadow(0 0 10px rgba(245, 212, 145, 0.55));
+  }
+}
 
 /* replay: a small ? in the controls */
-.btn.icon.help{font-weight:750;font-size:15px;line-height:20px;min-width:38px;padding:7px 10px}
+.btn.icon.help {
+  font-weight: 750;
+  font-size: 15px;
+  line-height: 20px;
+  min-width: 38px;
+  padding: 7px 10px;
+}

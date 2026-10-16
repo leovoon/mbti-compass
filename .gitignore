@@ -3,3 +3,11 @@ codedb.snapshot
 .wrangler/
 node_modules/
 dist/
+node_modules
+dist
+.void
+.wrangler
+*.tsbuildinfo
+
+# Cloudflare v2 build output + generated types (also excluded from vp check)
+.cloudflare/
