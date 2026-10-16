@@ -121,15 +121,47 @@ export function refreshSearch() {
   }
 }
 
-function setOpen(open: boolean) {
+const SEARCH_HISTORY_KEY = "compassSearchOpen";
+let historyClosing = false;
+let reopenAfterBack = false;
+
+function paintOpen(open: boolean, restoreFocus = true) {
   panel.hidden = !open;
   trigger.setAttribute("aria-expanded", String(open));
   if (open) {
     closePicker(false);
     renderResults();
     input.focus({ preventScroll: true });
-  } else trigger.focus({ preventScroll: true });
+  } else if (restoreFocus) trigger.focus({ preventScroll: true });
 }
+
+function setOpen(open: boolean, restoreFocus = true) {
+  if (historyClosing) {
+    reopenAfterBack = open;
+    return;
+  }
+  if (open === !panel.hidden) return;
+  if (open) {
+    history.pushState({ ...history.state, [SEARCH_HISTORY_KEY]: true }, "");
+  } else if (history.state?.[SEARCH_HISTORY_KEY]) {
+    historyClosing = true;
+    history.back();
+  }
+  paintOpen(open, restoreFocus);
+}
+
+window.addEventListener("popstate", () => {
+  const open = history.state?.[SEARCH_HISTORY_KEY] === true;
+  historyClosing = false;
+  if (open !== !panel.hidden) paintOpen(open);
+  if (reopenAfterBack) {
+    reopenAfterBack = false;
+    setOpen(true);
+  }
+});
+// Restore a search entry reached by reload or browser session restoration.
+if (history.state?.[SEARCH_HISTORY_KEY] === true) paintOpen(true);
+
 trigger.addEventListener("click", () => setOpen(Boolean(panel.hidden)));
 close.addEventListener("click", () => setOpen(false));
 input.addEventListener("input", (event) => {
@@ -186,9 +218,7 @@ document.addEventListener("pointerdown", (event) => {
     !root.contains(event.target as Node) &&
     !document.querySelector("dialog[open]")
   ) {
-    panel.hidden = true;
-    trigger.setAttribute("aria-expanded", "false");
-    if (panel.contains(document.activeElement)) trigger.focus({ preventScroll: true });
+    setOpen(false, panel.contains(document.activeElement));
   }
 });
 root.addEventListener("focusout", () => {
@@ -198,8 +228,7 @@ root.addEventListener("focusout", () => {
       !root.contains(document.activeElement) &&
       !document.querySelector("dialog[open]")
     ) {
-      panel.hidden = true;
-      trigger.setAttribute("aria-expanded", "false");
+      setOpen(false, false);
     }
   });
 });
