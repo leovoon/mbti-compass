@@ -30,6 +30,18 @@ const close = root.querySelector<HTMLButtonElement>(".search-close")!;
 const input = root.querySelector<HTMLInputElement>("input")!;
 const results = root.querySelector<HTMLElement>(".search-results")!;
 const status = root.querySelector<HTMLElement>(".search-status")!;
+
+function syncViewport() {
+  const viewport = window.visualViewport;
+  const height = viewport?.height ?? window.innerHeight;
+  const bottom = Math.max(0, window.innerHeight - height - (viewport?.offsetTop ?? 0));
+  root.style.setProperty("--search-viewport-height", `${height}px`);
+  root.style.setProperty("--search-keyboard-offset", `${bottom}px`);
+}
+window.visualViewport?.addEventListener("resize", syncViewport);
+window.visualViewport?.addEventListener("scroll", syncViewport);
+window.addEventListener("resize", syncViewport);
+syncViewport();
 const normalize = (value: string) =>
   value
     .normalize("NFD")
@@ -168,6 +180,13 @@ input.addEventListener("input", (event) => {
   if (!(event as InputEvent).isComposing) renderResults();
 });
 input.addEventListener("compositionend", renderResults);
+// Keep the input focused until click: mobile browsers can blur it before
+// dispatching a result click, moving the panel as the keyboard retracts.
+results.addEventListener("pointerdown", (event) => {
+  if (event.button === 0 && (event.target as Element).closest(".search-result")) {
+    event.preventDefault();
+  }
+});
 results.addEventListener("click", (event) => {
   const button = (event.target as Element).closest<HTMLButtonElement>(".search-result");
   if (!button) return;
@@ -221,14 +240,15 @@ document.addEventListener("pointerdown", (event) => {
     setOpen(false, panel.contains(document.activeElement));
   }
 });
-root.addEventListener("focusout", () => {
-  queueMicrotask(() => {
-    if (
-      !panel.hidden &&
-      !root.contains(document.activeElement) &&
-      !document.querySelector("dialog[open]")
-    ) {
-      setOpen(false, false);
-    }
-  });
+// Dismiss on an actual outside focus target, not the transient body focus
+// produced by hiding a mobile keyboard or tapping a non-focusable SVG child.
+document.addEventListener("focusin", (event) => {
+  if (
+    !panel.hidden &&
+    event.target !== document.body &&
+    !root.contains(event.target as Node) &&
+    !document.querySelector("dialog[open]")
+  ) {
+    setOpen(false, false);
+  }
 });

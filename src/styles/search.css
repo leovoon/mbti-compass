@@ -2,7 +2,7 @@
 .search-root {
   position: fixed;
   right: max(20px, env(safe-area-inset-right));
-  bottom: max(20px, env(safe-area-inset-bottom));
+  bottom: calc(var(--search-keyboard-offset, 0px) + max(20px, env(safe-area-inset-bottom)));
   z-index: 60;
   --search-edge: rgba(226, 215, 255, 0.24);
   --search-muted: #c2b9df;
@@ -101,7 +101,7 @@
 }
 .search-panel {
   width: min(420px, calc(100vw - 32px));
-  max-height: min(620px, calc(100dvh - 108px));
+  max-height: min(620px, calc(var(--search-viewport-height, 100dvh) - 108px));
   display: flex;
   flex-direction: column;
   margin-bottom: 12px;
@@ -133,6 +133,7 @@
   display: none;
 }
 .search-header {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -169,6 +170,7 @@
   height: 20px;
 }
 .search-input-wrap {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -214,6 +216,7 @@
   outline: none;
 }
 .search-status {
+  flex-shrink: 0;
   font-size: 12px;
   line-height: 1.5;
   color: var(--search-muted);
@@ -328,10 +331,10 @@
 @media (max-width: 480px) {
   .search-root {
     right: max(12px, env(safe-area-inset-right));
-    bottom: max(12px, env(safe-area-inset-bottom));
+    bottom: calc(var(--search-keyboard-offset, 0px) + max(12px, env(safe-area-inset-bottom)));
   }
   .search-panel {
     width: calc(100vw - 24px);
-    max-height: calc(100dvh - 100px);
+    max-height: calc(var(--search-viewport-height, 100dvh) - 100px);
   }
 }
