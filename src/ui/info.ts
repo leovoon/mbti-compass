@@ -5,13 +5,15 @@ import { fnArt } from "../art/functions";
 import { typeArt } from "../art/types";
 import { nameOf, t, tx } from "../i18n";
 import { animate, spring, SETTLE } from "../motion";
+import { setupTypeSlider, TYPE_VIEWS, type TypeView } from "./type-slider";
 
 const dlg = document.querySelector<HTMLDialogElement>("#info")!;
 const body = dlg.querySelector<HTMLElement>(".info-body")!;
 const closeBtn = dlg.querySelector<HTMLButtonElement>(".info-close")!;
 let returnTo: HTMLElement | null = null;
 let flipped = false;
-let typeView: "typical" | "stress" | "loop" = "typical";
+let typeView: TypeView = "typical";
+let typeSlider: ReturnType<typeof setupTypeSlider> | null = null;
 let flipAnimation: Animation | null = null;
 const card = dlg.querySelector<HTMLElement>(".info-card")!;
 const flipBtn = dlg.querySelector<HTMLButtonElement>(".info-flip")!;
@@ -112,14 +114,14 @@ function typeHTML(id: TypeId) {
       </div><section class="type-stack-panel" aria-label="${L.shadow}">${stackHTML(id)}</section></div>`;
   }
   return `<div class="type-info-layout"><div class="type-intro">
-    <div class="info-art" style="--c:${FN[T.dom].c}">${typeArt(id, "main", typeView)}</div>
+    <div class="info-art type-mood-art" data-view="${typeView}" style="--c:${FN[T.dom].c}">${TYPE_VIEWS.map((view) => `<span class="type-mood" data-mood="${view}" aria-hidden="true">${typeArt(id, "main", view)}</span>`).join("")}</div>
     <h2 class="ih" id="infoTitle">${id}<small>${T.n}</small></h2>
     <div class="type-view-switch" role="group" aria-labelledby="infoTitle">
       <button type="button" data-type-view="typical" aria-pressed="${typeView === "typical"}" aria-controls="typeOverview">${L.typical}</button>
       <button type="button" data-type-view="stress" aria-pressed="${typeView === "stress"}" aria-controls="typeOverview">${L.stress}</button>
       <button type="button" data-type-view="loop" aria-pressed="${typeView === "loop"}" aria-controls="typeOverview">${loopCopy().label}</button>
     </div>
-    <div id="typeOverview">${typeView === "stress" ? stressHTML(id) : typeView === "loop" ? loopHTML(id) : `<p class="id">${t().typeInfo?.[id]?.d ?? T.d}</p>`}</div>
+    <div id="typeOverview" class="type-slider">${TYPE_VIEWS.map((view) => `<div class="type-slide" data-view="${view}" role="region" aria-label="${view === "typical" ? L.typical : view === "stress" ? L.stress : loopCopy().label}" aria-hidden="${view !== typeView}" ${view !== typeView ? "inert" : ""}><div class="type-slide-content">${view === "stress" ? stressHTML(id) : view === "loop" ? loopHTML(id) : `<p class="id">${t().typeInfo?.[id]?.d ?? T.d}</p>`}</div></div>`).join("")}</div>
     </div><section class="type-stack-panel" aria-labelledby="stackTitle">
     <h3 class="stack-heading" id="stackTitle">${L.main}</h3>
     ${stackHTML(id)}</section></div>`;
@@ -127,6 +129,8 @@ function typeHTML(id: TypeId) {
 
 function render() {
   if (!current) return;
+  typeSlider?.dispose();
+  typeSlider = null;
   const L = exploreCopy();
   dlg.dataset.kind = current.kind;
   card.classList.toggle("is-shadow", current.kind === "type" && flipped);
@@ -140,6 +144,16 @@ function render() {
   flipBtn.textContent = flipped ? `${L.back} ${current.id}` : `${L.flip} ${destination}`;
   flipBtn.setAttribute("aria-pressed", String(flipped));
   closeBtn.textContent = tx("close");
+  if (current.kind === "type" && !flipped) {
+    typeSlider = setupTypeSlider(body, typeView, (view) => {
+      typeView = view;
+      body.querySelectorAll<HTMLButtonElement>("[data-type-view]").forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.typeView === view));
+      });
+      const art = body.querySelector<HTMLElement>(".type-mood-art");
+      if (art) art.dataset.view = view;
+    });
+  }
 }
 
 body.addEventListener("click", (event) => {
@@ -151,13 +165,8 @@ body.addEventListener("click", (event) => {
     (next !== "typical" && next !== "stress" && next !== "loop")
   )
     return;
-  if (next === typeView) return;
   flipAnimation?.cancel();
-  typeView = next;
-  render();
-  body
-    .querySelector<HTMLButtonElement>(`[data-type-view="${typeView}"]`)
-    ?.focus({ preventScroll: true });
+  typeSlider?.select(next);
 });
 
 flipBtn.addEventListener("click", () => {
@@ -255,6 +264,8 @@ export async function closeInfo() {
   }
   delete dlg.dataset.closing;
   dlg.classList.remove("closing");
+  typeSlider?.dispose();
+  typeSlider = null;
   dlg.close();
   a?.cancel();
   returnTo?.focus({ preventScroll: true });

@@ -349,6 +349,89 @@
   font-size: 14px;
   line-height: 1.6;
 }
+/* Only the overview pages horizontally; the card owns vertical scrolling. */
+.type-slider {
+  min-width: 0;
+  overflow: hidden;
+  overflow-anchor: none;
+  transition: height 220ms var(--settle);
+}
+.type-slide {
+  min-width: 0;
+}
+.type-slide-content {
+  display: flow-root;
+  padding: 0 3px 6px;
+}
+.type-mood-art {
+  position: relative;
+}
+.type-mood {
+  position: absolute;
+  inset: 12px;
+  opacity: 0;
+  transition: opacity 180ms ease-out;
+  pointer-events: none;
+}
+.type-mood-art[data-view="typical"] [data-mood="typical"],
+.type-mood-art[data-view="stress"] [data-mood="stress"],
+.type-mood-art[data-view="loop"] [data-mood="loop"] {
+  opacity: 1;
+}
+
+@media (max-width: 859px) {
+  /* The whole card swipes between views; vertical scrolling stays native. */
+  .info-card:has(.type-slider) {
+    touch-action: pan-y pinch-zoom;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  /* Inside the slider, native scroll-snap panning keeps its momentum. */
+  .info-card:has(.type-slider) .type-slider {
+    touch-action: pan-x pan-y pinch-zoom;
+  }
+  .type-intro:has(.type-slider) :is(.type-mood-art, #infoTitle) {
+    cursor: grab;
+  }
+  .type-slider.is-dragging {
+    scroll-snap-type: none;
+  }
+  .type-slider {
+    display: flex;
+    align-items: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    direction: ltr;
+  }
+  .type-slider::-webkit-scrollbar {
+    display: none;
+  }
+  .type-slider.is-sliding {
+    transition: none;
+  }
+  .type-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  .info-card {
+    overflow-anchor: none;
+  }
+}
+@media (min-width: 860px) {
+  .type-slide[aria-hidden="true"] {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .type-slider,
+  .type-mood {
+    transition: none;
+  }
+}
+
 .type-view-switch {
   display: flex;
   overflow-x: auto;
