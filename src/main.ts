@@ -143,6 +143,8 @@ function applyLocale() {
   langSel.title = `${E.language}: ${L.langName}`;
   $(".header-language").title = langSel.title;
   $("#exploreLink").textContent = E.explore;
+  $("#arenaLink").textContent =
+    { "zh-TW": "挑戰陰影競技場", "zh-CN": "挑战阴影竞技场" }[locale()] ?? "Play shadow arena";
   document.documentElement.lang = locale();
   document.title = L.docTitle;
   $("#h1").innerHTML = `MBTI ${L.h1}`;
